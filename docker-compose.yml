@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  ghost:
+    image: ghost:alpine
+    container_name: personal_website_ghost
+    restart: always
+    depends_on:
+      - db
+    env_file:
+      - ./ghost.env
+    ports:
+      - "8080:2368"
+    volumes:
+        - "./ghost_theme:/var/lib/ghost/content/themes/ui/:Z"
+
+  db:
+    image: mysql:5.7
+    container_name: personal_website_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ghost
+    volumes:
+        - "db-data:/var/lib/mysql"
+
+volumes:
+  db-data:
