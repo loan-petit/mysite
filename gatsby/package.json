@@ -31,11 +31,13 @@
     "gatsby-plugin-manifest": "2.2.42",
     "gatsby-plugin-offline": "3.0.35",
     "gatsby-plugin-react-helmet": "3.1.22",
+    "gatsby-plugin-sass": "^2.2.1",
     "gatsby-plugin-sharp": "2.4.5",
     "gatsby-source-filesystem": "2.1.48",
     "gatsby-source-ghost": "4.0.4",
     "gatsby-transformer-sharp": "2.3.16",
     "lodash": "4.17.15",
+    "node-sass": "^4.13.1",
     "react": "16.13.0",
     "react-dom": "16.13.0",
     "react-helmet": "5.2.1"
