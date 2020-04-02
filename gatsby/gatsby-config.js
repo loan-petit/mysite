@@ -42,7 +42,11 @@ module.exports = {
         {
             resolve: `gatsby-plugin-sass`,
             options: {
-                includePaths: ["src/styles/"]
+                includePaths: ["src/styles/"],
+                postCssPlugins: [
+                    require("tailwindcss"),
+                    require("./tailwind.config.js") // Optional: Load custom Tailwind CSS configuration
+                ]
             }
         },
         /**
