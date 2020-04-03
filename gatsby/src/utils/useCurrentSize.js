@@ -12,8 +12,7 @@ const getHeight = () =>
 
 export function useCurrentSize() {
     // Save current screen width and height
-    let [width, setWidth] = useState(getWidth());
-    let [height, setHeight] = useState(getHeight());
+    let [size, setSize] = useState({ width: getWidth(), height: getHeight() });
 
     // In this case useEffect will execute only once because
     // it does not have any dependencies.
@@ -25,8 +24,10 @@ export function useCurrentSize() {
             // Prevent execution of previous setTimeout
             clearTimeout(timeoutId);
             // Change width and height from the state object after 150 milliseconds
-            timeoutId = setTimeout(() => setWidth(getWidth()), 150);
-            timeoutId = setTimeout(() => setHeight(getHeight()), 150);
+            timeoutId = setTimeout(
+                () => setSize({ width: getWidth(), height: getHeight() }),
+                150
+            );
         };
 
         // Set resize listener
@@ -39,7 +40,7 @@ export function useCurrentSize() {
         };
     }, []);
 
-    return { width: width, height: height };
+    return size;
 }
 
 export default useCurrentSize;

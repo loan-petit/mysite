@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
-import { Link, StaticQuery, graphql } from "gatsby";
+import { StaticQuery, graphql } from "gatsby";
 
-import { Header } from ".";
+import { Navbar, WaveShapedCanvas } from ".";
 
 // Styles
 import "../../styles/app.scss";
@@ -23,11 +23,24 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
         <>
             <Helmet>
                 <html lang={site.lang} />
+                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3.0, minimum-scale=1"/>
                 <style type="text/css">{`${site.codeinjection_styles}`}</style>
                 <body className={bodyClass} />
             </Helmet>
 
-            <Header data={site} isHome={isHome} />
+            <header>
+                <Navbar data={site} />
+                {isHome && (
+                    <div
+                        className="relative w-full bg-center bg-cover vh-32"
+                        style={{
+                            backgroundImage: `url(${site.cover_image})`
+                        }}
+                    >
+                        <WaveShapedCanvas fillStyle="#e2e8f0" />
+                    </div>
+                )}
+            </header>
 
             <main>
                 {/* All the main content gets inserted here, index.js, post.js, etc. */}

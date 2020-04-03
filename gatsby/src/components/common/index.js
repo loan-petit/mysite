@@ -1,4 +1,6 @@
 export { default as Layout } from './Layout'
-export { default as PostCard } from './PostCard'
+export { default as Navbar } from './navbar/Navbar'
 export { default as Pagination } from './Pagination'
-export { default as Header } from './header/Header'
+export { default as PostCard } from './PostCard'
+export { default as ProfileCard } from './ProfileCard'
+export { default as WaveShapedCanvas } from './WaveShapedCanvas'

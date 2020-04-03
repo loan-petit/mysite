@@ -53,7 +53,7 @@ const Navbar = ({ data }) => {
                     >
                         <ul className="flex flex-col lg:flex-row list-none mr-auto">
                             {data.navigation.map((navItem, i) => (
-                                <NavigationButton data={navItem} key={i} />
+                                <NavigationButton url={navItem.url} label={navItem.label} key={i} />
                             ))}
                         </ul>
                     </div>

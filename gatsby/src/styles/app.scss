@@ -3,6 +3,7 @@
 // Use Font Awesome
 $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
 @import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/brands";
 @import "~@fortawesome/fontawesome-free/scss/regular";
 @import "~@fortawesome/fontawesome-free/scss/solid";
 
@@ -10,7 +11,18 @@ $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
 @tailwind base;
 @tailwind components;
 
-// Import custom utilities
+// Extract CSS components
+.social-button {
+    @apply bg-white font-normal h-10 w-10 mr-2 rounded-full shadow-lg outline-none;
+}
 
 // Import Tailwind utilities
 @tailwind utilities;
+
+.vh-32 {
+    height: 32vh;
+}
+
+.-v-mt-24 {
+    margin-top: -24vh;
+}
