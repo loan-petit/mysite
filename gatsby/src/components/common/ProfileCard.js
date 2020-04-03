@@ -10,10 +10,8 @@ import SocialButtons from "./SocialButtons";
 const ProfileCard = ({ data }) => {
     return (
         <div className="relative py-20 bg-gray-300">
-            <WaveShapedCanvas fillStyle="#1a202c" />
-
             <div className="container mx-auto px-4">
-                <div className="relative w-full flex flex-col items-center px-6 -v-mt-24 mb-6 break-words bg-white shadow-xl rounded-lg">
+                <div className="relative w-full flex flex-col items-center px-6 mb-6 break-words bg-white shadow-xl rounded-lg -v-mt-40 lg:-v-mt-24">
                     {/* Profile picture */}
                     <img
                         alt={data.name}
@@ -28,13 +26,13 @@ const ProfileCard = ({ data }) => {
                             {data.name}
                         </h3>
                         <div className="text-base leading-normal mt-0 mb-2 text-gray-500 font-bold uppercase">
-                            - Freelance developer -
-                            <br />
-                            Mobile & Web Apps, DevOps
+                            Freelance developer
                         </div>
 
                         {/* Social links */}
                         <SocialButtons data={data} />
+
+                        {/* Location */}
                         {data.location && (
                             <div className="mt-6 mb-2 text-gray-700">
                                 <i className="fas fa-map-marker-alt mr-2 text-lg text-gray-500"></i>{" "}

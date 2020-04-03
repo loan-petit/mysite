@@ -7,7 +7,8 @@ import {
     Layout,
     PostCard,
     Pagination,
-    Services
+    Services,
+    Projects
 } from "../components/common";
 import { MetaData } from "../components/common/meta";
 
@@ -30,6 +31,8 @@ const Index = ({ data, location, pageContext }) => {
                 <ProfileCard />
 
                 <Services />
+
+                <Projects />
 
                 <div className="container">
                     <section className="post-feed">

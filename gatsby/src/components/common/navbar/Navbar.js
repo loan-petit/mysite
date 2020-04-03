@@ -20,13 +20,13 @@ const Navbar = ({ data }) => {
 
     return (
         <>
-            <nav className="flex flex-wrap items-center justify-between px-2 py-3 bg-white shadow">
+            <nav className="flex flex-wrap items-center justify-between px-2 py-3 bg-white shadow-xl">
                 <div className="container flex flex-wrap items-center justify-between px-4 mx-auto">
                     <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
                         {/* Title */}
                         <Link
                             to="/"
-                            className="text-sm font-bold mr-4 py-2 whitespace-no-wrap uppercase text-gray-800"
+                            className="text-sm font-bold mr-4 py-2 whitespace-no-wrap uppercase text-gray-800 hover:text-gray-600"
                         >
                             {data.logo ? (
                                 <img src={data.logo} alt={data.title} />

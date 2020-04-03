@@ -6,15 +6,16 @@ import WaveShapedCanvas from "./WaveShapedCanvas";
  */
 const Services = () => {
     return (
-        <div className="relative pt-20 pb-32 lg:pb-56 bg-gray-900">
+        <div className="relative pb-32 lg:pb-56 bg-gray-300">
             <WaveShapedCanvas fillStyle="#ffffff" />
 
-            <h2 className="text-center text-4xl font-semibold text-white">
+            <h2 className="text-center text-4xl font-semibold text-gray-800">
                 My services
             </h2>
 
             <div className="flex flex-wrap justify-center">
-                <div className="w-full lg:w-3/12 px-4 mt-12 text-center">
+                {/* Mobile and web applications */}
+                <div className="w-full md:w-5/12 lg:w-3/12 px-4 mt-12 text-center">
                     <div className="service-icon-container">
                         <i className="fas fa-desktop text-xl"></i>
                     </div>
@@ -26,7 +27,8 @@ const Services = () => {
                         preferences.
                     </p>
                 </div>
-                <div className="w-full lg:w-3/12 px-4 mt-12 text-center">
+                {/* DevOps */}
+                <div className="w-full md:w-5/12 lg:w-3/12 px-4 mt-12 text-center">
                     <div className="service-icon-container">
                         <i className="fas fa-cogs text-xl"></i>
                     </div>
@@ -39,7 +41,8 @@ const Services = () => {
             </div>
 
             <div className="flex flex-wrap justify-center">
-                <div className="w-full lg:w-3/12 px-4 mt-12 text-center">
+                {/* Backend */}
+                <div className="w-full md:w-5/12 lg:w-3/12 px-4 mt-12 text-center">
                     <div className="service-icon-container">
                         <i className="fas fa-cogs text-xl"></i>
                     </div>
@@ -49,7 +52,8 @@ const Services = () => {
                         GraphQL, Prisma and Node.js.
                     </p>
                 </div>
-                <div className="w-full lg:w-3/12 px-4 mt-12 text-center">
+                {/* Chatbot */}
+                <div className="w-full md:w-5/12 lg:w-3/12 px-4 mt-12 text-center">
                     <div className="service-icon-container">
                         <i className="fas fa-lightbulb text-xl"></i>
                     </div>

@@ -19,7 +19,7 @@ const WaveShapedCanvas = ({ fillStyle }) => {
     React.useEffect(() => {
         const canvas = canvasRef.current;
         canvas.width = screenSize.width;
-        canvas.height = screenSize.height / 10;
+        canvas.height = screenSize.height / 15;
         var ctx = canvas.getContext("2d");
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -29,7 +29,7 @@ const WaveShapedCanvas = ({ fillStyle }) => {
         ctx.moveTo(0, canvas.height * 0.5);
         ctx.quadraticCurveTo(
             canvas.width * 0.5,
-            canvas.height,
+            canvas.height * 0.6,
             canvas.width,
             0
         );

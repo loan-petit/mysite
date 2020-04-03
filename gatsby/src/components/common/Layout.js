@@ -32,13 +32,11 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                 <Navbar data={site} />
                 {isHome && (
                     <div
-                        className="relative w-full bg-center bg-cover vh-32"
+                        className="relative w-full bg-center bg-cover vh-48 lg:vh-32"
                         style={{
                             backgroundImage: `url(${site.cover_image})`
                         }}
-                    >
-                        <WaveShapedCanvas fillStyle="#e2e8f0" />
-                    </div>
+                    />
                 )}
             </header>
 
