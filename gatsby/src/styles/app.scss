@@ -16,6 +16,18 @@ $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
     @apply bg-white font-normal h-10 w-10 mr-2 rounded-full shadow-lg outline-none;
 }
 
+.service-icon-container {
+    @apply text-gray-900 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center;
+}
+
+.service-title {
+    @apply text-xl mt-5 font-semibold text-white;
+}
+
+.service-summary {
+    @apply mt-2 mb-4 text-gray-500;
+}
+
 // Import Tailwind utilities
 @tailwind utilities;
 

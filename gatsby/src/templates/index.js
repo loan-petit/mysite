@@ -2,7 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 
-import { ProfileCard, Layout, PostCard, Pagination } from "../components/common";
+import {
+    ProfileCard,
+    Layout,
+    PostCard,
+    Pagination,
+    Services
+} from "../components/common";
 import { MetaData } from "../components/common/meta";
 
 /**
@@ -22,6 +28,8 @@ const Index = ({ data, location, pageContext }) => {
 
             <Layout isHome={true}>
                 <ProfileCard />
+
+                <Services />
 
                 <div className="container">
                     <section className="post-feed">

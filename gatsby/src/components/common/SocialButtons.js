@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "gatsby";
 
 /**
  * Social Buttons component
@@ -8,6 +7,7 @@ import { Link } from "gatsby";
 const SocialButtons = ({ data }) => {
     return (
         <div className="flex flex-wrap justify-center mt-6">
+            {/* LinkedIn or personal website */}
             {data.website && (
                 <a
                     href={data.website}
@@ -28,6 +28,7 @@ const SocialButtons = ({ data }) => {
                     )}
                 </a>
             )}
+            {/* Twitter */}
             {data.twitter && (
                 <a
                     href={data.twitter}
@@ -42,6 +43,7 @@ const SocialButtons = ({ data }) => {
                     </button>
                 </a>
             )}
+            {/* Facebook */}
             {data.facebook && (
                 <a
                     href={data.facebook}
@@ -56,6 +58,7 @@ const SocialButtons = ({ data }) => {
                     </button>
                 </a>
             )}
+            {/* GitHub */}
             <a
                 href="https://github.com/loan-petit"
                 target="_blank"

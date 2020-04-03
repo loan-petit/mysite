@@ -9,8 +9,8 @@ import SocialButtons from "./SocialButtons";
  */
 const ProfileCard = ({ data }) => {
     return (
-        <div className="relative py-16 bg-gray-300">
-            <WaveShapedCanvas fillStyle="#2d3748" />
+        <div className="relative py-20 bg-gray-300">
+            <WaveShapedCanvas fillStyle="#1a202c" />
 
             <div className="container mx-auto px-4">
                 <div className="relative w-full flex flex-col items-center px-6 -v-mt-24 mb-6 break-words bg-white shadow-xl rounded-lg">
