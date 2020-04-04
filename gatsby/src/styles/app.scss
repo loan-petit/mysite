@@ -1,11 +1,11 @@
 @charset 'utf-8';
 
 // Use Font Awesome
-$fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
-@import "~@fortawesome/fontawesome-free/scss/fontawesome";
-@import "~@fortawesome/fontawesome-free/scss/brands";
-@import "~@fortawesome/fontawesome-free/scss/regular";
-@import "~@fortawesome/fontawesome-free/scss/solid";
+$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
 
 // Use Tailwind
 @tailwind base;
@@ -13,42 +13,42 @@ $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
 
 // Extract CSS components
 .social-button {
-    @apply bg-white h-12 w-12 mr-2 rounded-full shadow-lg outline-none text-2xl;
+  @apply bg-white h-12 w-12 mr-2 rounded-full shadow-lg outline-none text-2xl;
 }
 
 .service-icon-container {
-    @apply text-white p-3 w-12 h-12 shadow-lg rounded-full bg-gray-800 inline-flex items-center justify-center;
+  @apply text-white p-3 w-12 h-12 shadow-lg rounded-full bg-gray-800 inline-flex items-center justify-center;
 }
 
 .service-title {
-    @apply text-xl mt-5 font-semibold text-gray-800;
+  @apply text-xl mt-5 font-semibold text-gray-800;
 }
 
 .service-summary {
-    @apply mt-2 mb-4 text-gray-600;
+  @apply mt-2 mb-4 text-gray-600;
 }
 
 .projects-navigation-button {
-    @apply absolute top-0 mt-32 bg-white rounded-full shadow-md h-12 w-12 text-xl text-indigo-600;
+  @apply absolute top-0 mt-32 bg-white rounded-full shadow-md h-12 w-12 text-xl text-indigo-600;
 }
 
 // Import Tailwind utilities
 @tailwind utilities;
 
 @responsive {
-    .vh-32 {
-        height: 32vh;
-    }
+  .vh-32 {
+    height: 32vh;
+  }
 
-    .vh-48 {
-        height: 48vh;
-    }
+  .vh-48 {
+    height: 48vh;
+  }
 
-    .-v-mt-24 {
-        margin-top: -24vh;
-    }
+  .-v-mt-24 {
+    margin-top: -24vh;
+  }
 
-    .-v-mt-40 {
-        margin-top: -40vh;
-    }
+  .-v-mt-40 {
+    margin-top: -40vh;
+  }
 }
