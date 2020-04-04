@@ -23,7 +23,10 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
         <>
             <Helmet>
                 <html lang={site.lang} />
-                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3.0, minimum-scale=1"/>
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1, maximum-scale=3.0, minimum-scale=1"
+                />
                 <style type="text/css">{`${site.codeinjection_styles}`}</style>
                 <body className={bodyClass} />
             </Helmet>

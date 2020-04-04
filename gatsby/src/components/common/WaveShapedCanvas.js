@@ -14,7 +14,6 @@ const WaveShapedCanvas = ({ fillStyle }) => {
 
     // Redraw the background and its overlay on screen resize
     var screenSize = useCurrentSize();
-    console.log(screenSize);
 
     React.useEffect(() => {
         const canvas = canvasRef.current;
