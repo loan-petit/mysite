@@ -10,22 +10,22 @@ import SocialButtons from "./SocialButtons";
 const ProfileCard = ({ data }) => {
     return (
         <div className="relative py-20 bg-gray-300">
-            <div className="container mx-auto px-4">
-                <div className="relative w-full flex flex-col items-center px-6 mb-6 break-words bg-white shadow-xl rounded-lg -v-mt-40 lg:-v-mt-24">
+            <div className="container px-4 mx-auto">
+                <div className="relative flex flex-col items-center w-full px-6 mb-6 break-words bg-white rounded-lg shadow-xl -v-mt-40 lg:-v-mt-24">
                     {/* Profile picture */}
                     <img
                         alt={data.name}
                         src={data.profile_image}
-                        className="shadow-xl rounded-full h-auto border-none -mt-20"
+                        className="h-auto -mt-20 border-none rounded-full shadow-xl"
                         style={{ maxWidth: "150px" }}
                     />
 
-                    <div className="text-center mt-6">
+                    <div className="mt-6 text-center">
                         {/* General informations */}
-                        <h3 className="text-4xl font-semibold leading-normal mb-2 text-gray-800 mb-2">
+                        <h3 className="mb-2 text-4xl font-semibold leading-normal text-gray-800">
                             {data.name}
                         </h3>
-                        <div className="text-base leading-normal mt-0 mb-2 text-gray-500 font-bold uppercase">
+                        <div className="mt-0 mb-2 text-base font-bold leading-normal text-gray-500 uppercase">
                             Freelance developer
                         </div>
 
@@ -35,16 +35,16 @@ const ProfileCard = ({ data }) => {
                         {/* Location */}
                         {data.location && (
                             <div className="mt-6 mb-2 text-gray-700">
-                                <i className="fas fa-map-marker-alt mr-2 text-lg text-gray-500"></i>{" "}
+                                <i className="mr-2 text-lg text-gray-500 fas fa-map-marker-alt"></i>{" "}
                                 {data.location}
                             </div>
                         )}
                     </div>
 
                     {/* Profile summary */}
-                    <div className="mt-10 py-10 border-t border-gray-300 text-center">
+                    <div className="py-10 mt-10 text-center border-t border-gray-300">
                         <div className="flex flex-wrap justify-center">
-                            <div className="w-full lg:w-9/12 px-4">
+                            <div className="w-full px-4 lg:w-9/12">
                                 <p className="mb-4 text-lg leading-relaxed text-gray-800">
                                     {data.bio}
                                 </p>

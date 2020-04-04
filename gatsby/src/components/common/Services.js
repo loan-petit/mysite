@@ -6,18 +6,18 @@ import WaveShapedCanvas from "./WaveShapedCanvas";
  */
 const Services = () => {
     return (
-        <div className="relative pb-32 lg:pb-56 bg-gray-300">
+        <div className="relative pb-32 bg-gray-300 lg:pb-56">
             <WaveShapedCanvas fillStyle="#ffffff" />
 
-            <h2 className="text-center text-4xl font-semibold text-gray-800">
+            <h2 className="text-4xl font-semibold text-center text-gray-800">
                 My services
             </h2>
 
             <div className="flex flex-wrap justify-center">
                 {/* Mobile and web applications */}
-                <div className="w-full md:w-5/12 lg:w-3/12 px-4 mt-12 text-center">
+                <div className="w-full px-4 mt-12 text-center md:w-5/12 lg:w-3/12">
                     <div className="service-icon-container">
-                        <i className="fas fa-desktop text-xl"></i>
+                        <i className="text-xl fas fa-desktop"></i>
                     </div>
                     <h5 className="service-title">
                         Mobile and web applications
@@ -28,9 +28,9 @@ const Services = () => {
                     </p>
                 </div>
                 {/* DevOps */}
-                <div className="w-full md:w-5/12 lg:w-3/12 px-4 mt-12 text-center">
+                <div className="w-full px-4 mt-12 text-center md:w-5/12 lg:w-3/12">
                     <div className="service-icon-container">
-                        <i className="fas fa-cogs text-xl"></i>
+                        <i className="text-xl fas fa-cubes"></i>
                     </div>
                     <h5 className="service-title">DevOps</h5>
                     <p className="service-summary">
@@ -42,9 +42,9 @@ const Services = () => {
 
             <div className="flex flex-wrap justify-center">
                 {/* Backend */}
-                <div className="w-full md:w-5/12 lg:w-3/12 px-4 mt-12 text-center">
+                <div className="w-full px-4 mt-12 text-center md:w-5/12 lg:w-3/12">
                     <div className="service-icon-container">
-                        <i className="fas fa-cogs text-xl"></i>
+                        <i className="text-xl fas fa-cogs"></i>
                     </div>
                     <h5 className="service-title">Backend</h5>
                     <p className="service-summary">
@@ -53,9 +53,9 @@ const Services = () => {
                     </p>
                 </div>
                 {/* Chatbot */}
-                <div className="w-full md:w-5/12 lg:w-3/12 px-4 mt-12 text-center">
+                <div className="w-full px-4 mt-12 text-center md:w-5/12 lg:w-3/12">
                     <div className="service-icon-container">
-                        <i className="fas fa-lightbulb text-xl"></i>
+                        <i className="text-xl fas fa-comments"></i>
                     </div>
                     <h5 className="service-title">Chatbot</h5>
                     <p className="service-summary">

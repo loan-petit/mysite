@@ -7,7 +7,8 @@ import {
     Layout,
     Services,
     ProjectCard,
-    WaveShapedCanvas
+    WaveShapedCanvas,
+    Contact
 } from "../components/common";
 import { MetaData } from "../components/common/meta";
 
@@ -33,7 +34,7 @@ const Index = ({ data, location }) => {
                 <Services />
 
                 <section className="relative pt-20 pb-32 lg:pb-56 bg-gray">
-                    <WaveShapedCanvas fillStyle="#e2e8f0" />
+                    <WaveShapedCanvas fillStyle="#1a202c" />
 
                     <h2 className="text-center text-4xl font-semibold text-gray-800">
                         My Projects
@@ -62,6 +63,8 @@ const Index = ({ data, location }) => {
                         ))}
                     </div>
                 </section>
+
+                <Contact />
             </Layout>
         </>
     );

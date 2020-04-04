@@ -47,6 +47,12 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                 {/* All the main content gets inserted here, index.js, post.js, etc. */}
                 {children}
             </main>
+
+            <div className="flex flex-wrap justify-center bg-gray-900">
+                <div className="pb-4 text-sm text-white font-ld">
+                    Copyright © {new Date().getFullYear()} Loan PETIT. All rights reserved.
+                </div>
+            </div>
         </>
     );
 };
