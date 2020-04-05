@@ -7,6 +7,7 @@ import Navbar from "./navbar/Navbar";
 
 // Styles
 import "../../styles/app.scss";
+import WaveShapedCanvas from "./WaveShapedCanvas";
 
 interface GraphqlNodeSetting {
   node: GhostContentApi.Setting & { codeinjection_styles: string };
@@ -53,7 +54,7 @@ const DefaultLayout: React.FunctionComponent<DefaultLayoutProps> = ({
       <header>
         <Navbar data={site} />
         {isHome && (
-          <div
+          <figure
             className="relative w-full bg-center bg-cover vh-48 lg:vh-32"
             style={{
               backgroundImage: `url(${site.cover_image})`,
@@ -67,11 +68,17 @@ const DefaultLayout: React.FunctionComponent<DefaultLayoutProps> = ({
         {children}
       </main>
 
-      <div className="flex flex-wrap justify-center bg-gray-900">
-        <div className="pb-4 text-sm text-white font-ld">
+      {!isHome && (
+        <div className="relative mt-20 lg:mt-32">
+          <WaveShapedCanvas fillStyle="#1a202c" />
+        </div>
+      )}
+
+      <div className="flex flex-col flex-wrap justify-center bg-gray-900">
+        <small className="pb-4">
           Copyright © {new Date().getFullYear()} Loan PETIT. All rights
           reserved.
-        </div>
+        </small>
       </div>
     </>
   );

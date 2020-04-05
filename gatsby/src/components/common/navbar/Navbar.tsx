@@ -1,12 +1,12 @@
-import React from "react";
-import { Link } from "gatsby";
-import * as GhostContentApi from "tryghost__content-api"
+import React from 'react'
+import { Link } from 'gatsby'
+import * as GhostContentApi from 'tryghost__content-api'
 
-import NavigationButton from "./NavigationButton";
+import NavigationButton from './NavigationButton'
 
 type NavbarProps = {
   data: GhostContentApi.Setting
-};
+}
 
 /**
  * Navbar component
@@ -20,18 +20,15 @@ type NavbarProps = {
  *
  */
 const Navbar: React.FunctionComponent<NavbarProps> = ({ data }) => {
-  const [navbarOpen, setNavbarOpen] = React.useState(false);
+  const [navbarOpen, setNavbarOpen] = React.useState(false)
 
   return (
     <>
-      <nav className="flex flex-wrap items-center justify-between px-2 py-3 bg-white shadow-xl">
-        <div className="container flex flex-wrap items-center justify-between px-4 mx-auto">
-          <div className="relative flex justify-between w-full lg:w-auto lg:static lg:block lg:justify-start">
+      <nav className='flex flex-wrap items-center justify-between px-2 py-3 bg-white'>
+        <div className='container flex flex-wrap items-center justify-between px-4 mx-auto'>
+          <div className='relative flex justify-between w-full lg:w-auto lg:static lg:block lg:justify-start'>
             {/* Title */}
-            <Link
-              to="/"
-              className="py-2 mr-4 text-sm font-bold text-gray-800 uppercase whitespace-no-wrap hover:text-gray-600"
-            >
+            <Link to='/' className='mr-4 nav-text hover:text-gray-600'>
               {data.logo ? (
                 <img src={data.logo} alt={data.title} />
               ) : (
@@ -41,17 +38,17 @@ const Navbar: React.FunctionComponent<NavbarProps> = ({ data }) => {
 
             {/* Menu Button */}
             <button
-              className="px-3 py-1 text-xl cursor-pointer focus:outline-none lg:hidden"
-              type="button"
+              className='px-3 py-1 text-xl cursor-pointer focus:outline-none lg:hidden'
+              type='button'
               onClick={() => setNavbarOpen(!navbarOpen)}
             >
-              <i className="text-gray-800 fas fa-bars" />
+              <i className='text-gray-800 fas fa-bars' />
             </button>
           </div>
 
           {/* Navigation Buttons */}
-          <div className={"bg-white lg:flex" + (!navbarOpen ? " hidden" : "")}>
-            <ul className="flex flex-col mr-auto list-none lg:flex-row">
+          <div className={'bg-white lg:flex' + (!navbarOpen ? ' hidden' : '')}>
+            <ul className='flex flex-col mr-auto list-none lg:flex-row'>
               {data.navigation.map((navItem, i) => (
                 <NavigationButton
                   url={navItem.url}
@@ -64,7 +61,7 @@ const Navbar: React.FunctionComponent<NavbarProps> = ({ data }) => {
         </div>
       </nav>
     </>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

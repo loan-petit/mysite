@@ -9,23 +9,58 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 
 // Use Tailwind
 @tailwind base;
+
+// Custom base styles
+h1 {
+  @apply py-1 text-4xl font-semibold leading-normal text-center text-gray-800;
+}
+
+h2 {
+  @apply text-2xl font-semibold;
+}
+
+h3 {
+  @apply text-xl pt-5 font-semibold text-gray-800;
+}
+
+h4 {
+  @apply py-1 text-base font-bold leading-normal text-gray-500 uppercase;
+}
+
+h5 {
+  @apply leading-relaxed pt-2 text-gray-600;
+}
+
+p {
+  @apply leading-relaxed pt-2 text-gray-700;
+}
+
+label {
+  @apply block pb-2 text-xs font-bold text-gray-700 uppercase;
+}
+
+input,
+textarea {
+  @apply w-full px-3 py-3 text-sm text-gray-700 bg-white rounded shadow;
+}
+
+small {
+  @apply text-sm text-center text-gray-300;
+}
+
 @tailwind components;
 
 // Extract CSS components
+.nav-text {
+  @apply px-3 py-2 text-xs font-bold text-gray-800 uppercase whitespace-no-wrap;
+}
+
 .social-button {
   @apply bg-white h-12 w-12 mr-2 rounded-full shadow-lg outline-none text-2xl;
 }
 
 .service-icon-container {
-  @apply text-white p-3 w-12 h-12 shadow-lg rounded-full bg-gray-800 inline-flex items-center justify-center;
-}
-
-.service-title {
-  @apply text-xl mt-5 font-semibold text-gray-800;
-}
-
-.service-summary {
-  @apply mt-2 mb-4 text-gray-600;
+  @apply text-white p-3 w-12 h-12 shadow-lg rounded-full bg-gray-800 inline-flex items-center justify-center text-xl;
 }
 
 .projects-navigation-button {

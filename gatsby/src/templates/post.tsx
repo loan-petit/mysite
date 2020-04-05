@@ -1,17 +1,19 @@
-import React from "react";
-import { graphql } from "gatsby";
-import Helmet from "react-helmet";
-import * as GhostContentApi from "tryghost__content-api";
+import React from 'react'
+import { graphql } from 'gatsby'
+import Helmet from 'react-helmet'
+import * as moment from 'moment'
+import { readingTime as readingTimeHelper } from '@tryghost/helpers'
+import * as GhostContentApi from 'tryghost__content-api'
 
-import { Layout } from "../components/common";
-import { MetaData } from "../components/common/meta";
+import { Layout } from '../components/common'
+import { MetaData } from '../components/common/meta'
 
 type PostProps = {
   data: {
-    ghostPost: GhostContentApi.PostOrPage & { codeinjection_styles: string };
-  },
+    ghostPost: GhostContentApi.PostOrPage & { codeinjection_styles: string }
+  }
   location: object
-};
+}
 
 /**
  * Single post view (/:slug)
@@ -20,37 +22,43 @@ type PostProps = {
  *
  */
 const Post: React.FunctionComponent<PostProps> = ({ data, location }) => {
-  const post = data.ghostPost;
+  const post = data.ghostPost
+  const readingTime = readingTimeHelper(post)
+
   return (
     <>
-      <MetaData data={data} location={location} type="article" />
+      <MetaData data={data} location={location} type='article' />
       <Helmet>
-        <style type="text/css">{`${post.codeinjection_styles}`}</style>
+        <style type='text/css'>{`${post.codeinjection_styles}`}</style>
       </Helmet>
       <Layout>
-        <div className="container">
-          <article className="content">
-            {post.feature_image ? (
-              <figure className="post-feature-image">
-                <img src={post.feature_image} alt={post.title} />
-              </figure>
-            ) : null}
-            <section className="post-full-content">
-              <h1 className="content-title">{post.title}</h1>
+        {/* Feature image */}
+        {post.feature_image && (
+          <figure className='flex justify-center w-full bg-center bg-cover'>
+            <img src={post.feature_image} alt={post.title} />
+          </figure>
+        )}
 
-              <section
-                className="content-body load-external-scripts"
-                dangerouslySetInnerHTML={{ __html: post.html }}
-              />
-            </section>
+        {/* Article content */}
+        <div className='container flex justify-center mx-auto'>
+          <article className='w-full px-6 mt-12 md:w-8/12'>
+            <h1 className="text-left">{post.title}</h1>
+            <h5 className="mb-12">
+              Published {moment(post.published_at).fromNow()} by {post.primary_author.name} • {readingTime}
+            </h5>
+
+            <section
+              className='content-body load-external-scripts'
+              dangerouslySetInnerHTML={{ __html: post.html }}
+            />
           </article>
         </div>
       </Layout>
     </>
-  );
-};
+  )
+}
 
-export default Post;
+export default Post
 
 export const postQuery = graphql`
   query($slug: String!) {
@@ -58,4 +66,4 @@ export const postQuery = graphql`
       ...GhostPostFields
     }
   }
-`;
+`

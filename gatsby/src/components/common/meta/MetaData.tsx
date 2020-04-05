@@ -1,37 +1,37 @@
-import React from "react";
-import { StaticQuery, graphql } from "gatsby";
-import url from "url";
-import * as GhostContentApi from "tryghost__content-api";
+import React from 'react'
+import { StaticQuery, graphql } from 'gatsby'
+import url from 'url'
+import * as GhostContentApi from 'tryghost__content-api'
 
-import config from "../../../utils/siteConfig";
-import ArticleMeta from "./ArticleMeta";
-import WebsiteMeta from "./WebsiteMeta";
+import config from '../../../utils/siteConfig'
+import ArticleMeta from './ArticleMeta'
+import WebsiteMeta from './WebsiteMeta'
 
 interface GraphqlNodeSetting {
-  node: GhostContentApi.Setting;
+  node: GhostContentApi.Setting
 }
 
 interface SettingsProp {
   allGhostSettings: {
-    edges: Array<GraphqlNodeSetting>;
-  };
+    edges: Array<GraphqlNodeSetting>
+  }
 }
 
 type MetaDataProps = {
   data: {
-    ghostPost?: object;
-    ghostTag?: object;
-    ghostAuthor?: object;
-    ghostPage?: object;
-  };
-  settings: SettingsProp | GhostContentApi.Setting;
+    ghostPost?: object
+    ghostTag?: object
+    ghostAuthor?: object
+    ghostPage?: object
+  }
+  settings: SettingsProp | GhostContentApi.Setting
   location: {
-    pathname: string;
-  };
-  title?: string;
-  description?: string;
-  image?: string;
-};
+    pathname: string
+  }
+  title?: string
+  description?: string
+  image?: string
+}
 
 /**
  * MetaData will generate all relevant meta data information incl.
@@ -44,20 +44,20 @@ const MetaData: React.FunctionComponent<MetaDataProps> = ({
   title,
   description,
   image,
-  location,
+  location
 }) => {
-  const canonical = url.resolve(config.siteUrl, location.pathname);
-  const { ghostPost, ghostTag, ghostAuthor, ghostPage } = data;
-  settings = (settings as SettingsProp).allGhostSettings.edges[0].node;
+  const canonical = url.resolve(config.siteUrl, location.pathname)
+  const { ghostPost, ghostTag, ghostAuthor, ghostPage } = data
+  settings = (settings as SettingsProp).allGhostSettings.edges[0].node
 
   if (ghostPost) {
-    return <ArticleMeta data={ghostPost} canonical={canonical} />;
+    return <ArticleMeta data={ghostPost} canonical={canonical} />
   } else {
-    title = title || config.siteTitleMeta || settings.title;
+    title = title || config.siteTitleMeta || settings.title
     description =
-      description || config.siteDescriptionMeta || settings.description;
-    image = image || settings.cover_image || null;
-    image = image ? url.resolve(config.siteUrl, image) : null;
+      description || config.siteDescriptionMeta || settings.description
+    image = image || settings.cover_image || null
+    image = image ? url.resolve(config.siteUrl, image) : null
 
     return (
       <WebsiteMeta
@@ -66,17 +66,17 @@ const MetaData: React.FunctionComponent<MetaDataProps> = ({
         title={title}
         description={description}
         image={image}
-        type="WebSite"
+        type='WebSite'
       />
-    );
+    )
   }
-};
+}
 
 MetaData.defaultProps = {
-  data: {},
-};
+  data: {}
+}
 
-const MetaDataQuery = (props) => (
+const MetaDataQuery = props => (
   <StaticQuery
     query={graphql`
       query GhostSettingsMetaData {
@@ -90,8 +90,8 @@ const MetaDataQuery = (props) => (
         }
       }
     `}
-    render={(data) => <MetaData settings={data} {...props} />}
+    render={data => <MetaData settings={data} {...props} />}
   />
-);
+)
 
-export default MetaDataQuery;
+export default MetaDataQuery
