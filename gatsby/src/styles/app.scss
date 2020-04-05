@@ -1,11 +1,11 @@
 @charset 'utf-8';
 
 // Use Font Awesome
-$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
-@import '~@fortawesome/fontawesome-free/scss/fontawesome';
-@import '~@fortawesome/fontawesome-free/scss/brands';
-@import '~@fortawesome/fontawesome-free/scss/regular';
-@import '~@fortawesome/fontawesome-free/scss/solid';
+$fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
 
 // Use Tailwind
 @tailwind base;
@@ -24,7 +24,7 @@ h3 {
 }
 
 h4 {
-  @apply py-1 text-base font-bold leading-normal text-gray-500 uppercase;
+  @apply py-1 text-base font-bold leading-normal text-gray-600 uppercase;
 }
 
 h5 {
@@ -42,34 +42,72 @@ label {
 input,
 textarea {
   @apply w-full px-3 py-3 text-sm text-gray-700 bg-white rounded shadow;
+
+  &::placeholder {
+    @apply text-gray-400;
+  }
+
+  &:focus {
+    @apply outline-none shadow-outline;
+  }
 }
 
 small {
   @apply text-sm text-center text-gray-300;
 }
 
+// Import tailwind components
 @tailwind components;
 
 // Extract CSS components
 .nav-text {
   @apply px-3 py-2 text-xs font-bold text-gray-800 uppercase whitespace-no-wrap;
+
+  &:hover {
+    @apply text-gray-600;
+  }
 }
 
 .social-button {
   @apply bg-white h-12 w-12 mr-2 rounded-full shadow-lg outline-none text-2xl;
+
+  &:focus {
+    @apply outline-none;
+  }
+}
+
+.link {
+  @apply text-accent;
+
+  &:hover {
+    @apply text-accent-lighter;
+  }
+
+  &:focus {
+    @apply text-accent-lighter;
+  }
 }
 
 .service-icon-container {
-  @apply text-white p-3 w-12 h-12 shadow-lg rounded-full bg-gray-800 inline-flex items-center justify-center text-xl;
+  @apply text-accent p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center text-xl;
 }
 
 .projects-navigation-button {
-  @apply absolute top-0 mt-32 bg-white rounded-full shadow-md h-12 w-12 text-xl text-indigo-600;
+  @apply absolute top-0 mt-32 bg-white rounded-full shadow-md h-12 w-12 text-xl text-accent;
+
+  &:hover {
+    @apply text-accent-lighter;
+  }
+
+  &:focus {
+    @apply outline-none;
+  }
 }
 
 // Import Tailwind utilities
 @tailwind utilities;
 
+// Add new utilities
 @responsive {
   .vh-32 {
     height: 32vh;

@@ -36,7 +36,7 @@ const ProfileCard: React.FunctionComponent<ProfileCardProps> = ({ data }) => {
             {/* Location */}
             {data.location && (
               <p className='mt-6 mb-2'>
-                <i className='mr-2 text-lg text-gray-500 fas fa-map-marker-alt' />{' '}
+                <i className='mr-2 text-lg text-gray-700 fas fa-map-marker-alt' />{' '}
                 {data.location}
               </p>
             )}

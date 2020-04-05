@@ -21,13 +21,13 @@ const SocialButtons: React.FunctionComponent<SocialButtonsProps> = ({
         <a href={data.website} target='_blank' rel='noopener noreferrer'>
           {data.website.match(/^http(s?):\/\/(www)*\.?linkedin/gi) ? (
             <button
-              className='social-button focus:outline-none'
+              className='social-button'
               style={{ color: '#2867b2' }}
             >
               <i className='fab fa-linkedin' />
             </button>
           ) : (
-            <button className='text-red-400 social-button focus:outline-none'>
+            <button className='text-red-400 social-button'>
               <i className='fas fa-globe' />
             </button>
           )}
@@ -38,7 +38,7 @@ const SocialButtons: React.FunctionComponent<SocialButtonsProps> = ({
       {data.twitter && (
         <a href={data.twitter} target='_blank' rel='noopener noreferrer'>
           <button
-            className='social-button focus:outline-none'
+            className='social-button'
             style={{ color: '#1DA1F2' }}
           >
             <i className='fab fa-twitter' />
@@ -50,7 +50,7 @@ const SocialButtons: React.FunctionComponent<SocialButtonsProps> = ({
       {data.facebook && (
         <a href={data.facebook} target='_blank' rel='noopener noreferrer'>
           <button
-            className='social-button focus:outline-none'
+            className='social-button'
             style={{ color: '#1877F2' }}
           >
             <i className='fab fa-facebook' />
@@ -65,7 +65,7 @@ const SocialButtons: React.FunctionComponent<SocialButtonsProps> = ({
         rel='noopener noreferrer'
       >
         <button
-          className='social-button focus:outline-none'
+          className='social-button'
           style={{ color: '#171516' }}
         >
           <i className='fab fa-github' />

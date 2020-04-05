@@ -8,15 +8,14 @@ const Contact = () => {
     <section className='relative px-6 py-24 bg-gray-900'>
       <div className='container flex flex-col w-full min-w-0 px-4 mx-auto break-words bg-gray-300 rounded-lg shadow-lg lg:w-5/12'>
         <div className='flex-auto p-5 lg:p-10'>
-          <h2>Want to work with us?</h2>
-          <h5>Complete this form and we will get back to you in 24 hours.</h5>
+          <h2>Want to work with me?</h2>
+          <h5>Complete this form and I will get back to you in 24 hours.</h5>
 
           {/* Full Name field */}
           <div className='relative w-full mt-8 mb-3'>
             <label htmlFor='full-name'>Full Name</label>
             <input
               type='text'
-              className='placeholder-gray-400 focus:outline-none focus:shadow-outline'
               placeholder='Full Name'
               style={{ transition: 'all .15s ease' }}
             />
@@ -27,7 +26,6 @@ const Contact = () => {
             <label htmlFor='email'>Email</label>
             <input
               type='email'
-              className='placeholder-gray-400 focus:outline-none focus:shadow-outline'
               placeholder='Email'
               style={{ transition: 'all .15s ease' }}
             />
@@ -39,7 +37,6 @@ const Contact = () => {
             <textarea
               rows={4}
               cols={80}
-              className='placeholder-gray-400 focus:outline-none focus:shadow-outline'
               placeholder='Type a message...'
             />
           </div>

@@ -57,8 +57,8 @@ const Index: React.FunctionComponent<IndexProps> = ({ data, location }) => {
               <button
                 key={index}
                 className={
-                  'w-4 h-4 mx-1 rounded-full shadow-lg focus:outline-none' +
-                  (index == activeIndex ? ' bg-indigo-400' : ' bg-gray-300')
+                  'w-4 h-4 mx-1 rounded-full shadow-lg hover:bg-accent-lighter focus:outline-none' +
+                  (index == activeIndex ? ' bg-accent' : ' bg-gray-300')
                 }
                 onClick={() => setActiveIndex(index)}
               />

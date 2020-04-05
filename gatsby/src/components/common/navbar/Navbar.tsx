@@ -28,7 +28,7 @@ const Navbar: React.FunctionComponent<NavbarProps> = ({ data }) => {
         <div className='container flex flex-wrap items-center justify-between px-4 mx-auto'>
           <div className='relative flex justify-between w-full lg:w-auto lg:static lg:block lg:justify-start'>
             {/* Title */}
-            <Link to='/' className='mr-4 nav-text hover:text-gray-600'>
+            <Link to='/' className='mr-4 nav-text'>
               {data.logo ? (
                 <img src={data.logo} alt={data.title} />
               ) : (

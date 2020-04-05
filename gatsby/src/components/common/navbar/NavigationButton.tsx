@@ -18,7 +18,7 @@ const NavigationButton: React.FunctionComponent<NavigationButtonProps> = ({
     return (
       <li className='flex items-center'>
         <a
-          className='nav-text hover:text-gray-600'
+          className='nav-text'
           href={url}
           target='_blank'
           rel='noopener noreferrer'
@@ -31,7 +31,7 @@ const NavigationButton: React.FunctionComponent<NavigationButtonProps> = ({
     // Internal navigation
     return (
       <li className='flex items-center'>
-        <Link className='nav-text hover:text-gray-600' to={url}>
+        <Link className='nav-text' to={url}>
           {label}
         </Link>
       </li>
