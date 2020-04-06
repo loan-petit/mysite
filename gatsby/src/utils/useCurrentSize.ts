@@ -10,7 +10,7 @@ const getHeight = () =>
   document.documentElement.clientHeight ||
   document.body.clientHeight
 
-export function useCurrentSize () {
+const useCurrentSize = () => {
   // Save current screen width and height
   let [size, setSize] = useState({ width: getWidth(), height: getHeight() })
 

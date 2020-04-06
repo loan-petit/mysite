@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { WaveShapedCanvas } from './common'
 
 /**
@@ -6,7 +7,7 @@ import { WaveShapedCanvas } from './common'
  */
 const Services = () => {
   return (
-    <section className='relative pb-32 bg-gray-300 lg:pb-56'>
+    <section id='services-hash' className='relative pb-32 bg-gray-300 lg:pb-56'>
       <WaveShapedCanvas fillStyle='#ffffff' />
 
       <h1>My services</h1>

@@ -68,9 +68,7 @@ const WebsiteMeta: React.FunctionComponent<WebsiteMetaProps> = ({
     data.description ||
     config.siteDescriptionMeta ||
     settings.description
-  title = `${title || data.meta_title || data.name || data.title} - ${
-    settings.title
-  }`
+  title = title || data.meta_title || data.name || data.title || settings.title
 
   const jsonLd = {
     '@context': `https://schema.org/`,

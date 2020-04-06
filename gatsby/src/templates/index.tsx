@@ -16,9 +16,7 @@ type IndexProps = {
       edges: Array<GraphqlNodePost>
     }
   }
-  location: {
-    pathname: string
-  }
+  location: Location
   pageContext?: object
 }
 
@@ -28,17 +26,18 @@ type IndexProps = {
 const Index: React.FunctionComponent<IndexProps> = ({ data, location }) => {
   const projects = data.allGhostPost.edges
   const [activeIndex, setActiveIndex] = React.useState(0)
+
   return (
     <>
       <MetaData location={location} />
 
-      <Layout isHome={true}>
+      <Layout isHome>
         <ProfileCard />
 
         <Services />
 
         {/* Projects */}
-        <section className='relative pt-20 pb-32 lg:pb-56'>
+        <section id='projects-hash' className='relative pt-20 pb-32 lg:pb-56'>
           <WaveShapedCanvas fillStyle='#1a202c' />
 
           <h1>My Projects</h1>
@@ -52,6 +51,7 @@ const Index: React.FunctionComponent<IndexProps> = ({ data, location }) => {
             goNext={() => setActiveIndex(activeIndex + 1)}
           />
 
+          {/* Buttons indicating the current item and allowing to easily browse those */}
           <div className='flex flex-wrap justify-center'>
             {projects.map((_, index) => (
               <button

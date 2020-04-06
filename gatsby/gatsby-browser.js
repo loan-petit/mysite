@@ -1,4 +1,5 @@
 /* eslint-disable */
+
 /**
  * Trust All Scripts
  *
@@ -27,6 +28,7 @@ var trustAllScripts = function () {
   }
 }
 
-exports.onRouteUpdate = function () {
+exports.onRouteUpdate = function ({ location }) {
+  require('./src/utils/scrollToFragment').default(location.hash)
   trustAllScripts()
 }

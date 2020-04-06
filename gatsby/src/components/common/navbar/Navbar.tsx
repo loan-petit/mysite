@@ -23,8 +23,8 @@ const Navbar: React.FunctionComponent<NavbarProps> = ({ data }) => {
   const [navbarOpen, setNavbarOpen] = React.useState(false)
 
   return (
-    <>
-      <nav className='flex flex-wrap items-center justify-between px-2 py-3 bg-white'>
+    <nav className='fixed inset-0 z-10 w-full'>
+      <div className='flex flex-wrap items-center justify-between px-2 py-3 bg-white'>
         <div className='container flex flex-wrap items-center justify-between px-4 mx-auto'>
           <div className='relative flex justify-between w-full lg:w-auto lg:static lg:block lg:justify-start'>
             {/* Title */}
@@ -59,8 +59,8 @@ const Navbar: React.FunctionComponent<NavbarProps> = ({ data }) => {
             </ul>
           </div>
         </div>
-      </nav>
-    </>
+      </div>
+    </nav>
   )
 }
 

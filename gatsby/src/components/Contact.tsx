@@ -5,7 +5,7 @@ import React from 'react'
  */
 const Contact = () => {
   return (
-    <section className='relative px-6 py-24 bg-gray-900'>
+    <section id='contact-hash' className='relative px-6 py-24 bg-gray-900'>
       <div className='container flex flex-col w-full min-w-0 px-4 mx-auto break-words bg-gray-300 rounded-lg shadow-lg lg:w-5/12'>
         <div className='flex-auto p-5 lg:p-10'>
           <h2>Want to work with me?</h2>
@@ -34,11 +34,7 @@ const Contact = () => {
           {/* Message field */}
           <div className='relative w-full mb-3'>
             <label htmlFor='message'>Message</label>
-            <textarea
-              rows={4}
-              cols={80}
-              placeholder='Type a message...'
-            />
+            <textarea rows={4} cols={80} placeholder='Type a message...' />
           </div>
 
           {/* Submit */}
