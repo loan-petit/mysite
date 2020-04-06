@@ -5,13 +5,15 @@ import scrollToFragment from '../../../utils/scrollToFragment'
 type NavigationButtonProps = {
   url: string
   label: string
+  setNavbarOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const handleLinkClick = (e, target) => {
+const handleLinkClick = (e, target, setNavbarOpen) => {
   if (typeof window !== 'undefined' && target.includes('#')) {
     const [targetPathname, hash] = target.split('#')
     if (window.location.pathname === targetPathname) {
       if (e) e.preventDefault()
+      setNavbarOpen(false)
       scrollToFragment(`#${hash}`)
     }
   }
@@ -22,7 +24,8 @@ const handleLinkClick = (e, target) => {
  */
 const NavigationButton: React.FunctionComponent<NavigationButtonProps> = ({
   url,
-  label
+  label,
+  setNavbarOpen
 }) => {
   if (url.match(/^\s?http(s?)/gi)) {
     // External link
@@ -45,7 +48,7 @@ const NavigationButton: React.FunctionComponent<NavigationButtonProps> = ({
         <Link
           className='nav-text'
           to={url}
-          onClick={e => handleLinkClick(e, url)}
+          onClick={e => handleLinkClick(e, url, setNavbarOpen)}
         >
           {label}
         </Link>
