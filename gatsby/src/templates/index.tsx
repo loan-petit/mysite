@@ -42,14 +42,13 @@ const Index: React.FunctionComponent<IndexProps> = ({ data, location }) => {
 
           <h1>My Projects</h1>
 
-          <ProjectCard
-            key={projects[activeIndex].node.id}
+          {projects[activeIndex] && <ProjectCard
             project={projects[activeIndex].node}
             isFirst={!activeIndex}
             isLast={activeIndex == projects.length - 1}
             goPrev={() => setActiveIndex(activeIndex - 1)}
             goNext={() => setActiveIndex(activeIndex + 1)}
-          />
+          />}
 
           {/* Buttons indicating the current item and allowing to easily browse those */}
           <div className='flex flex-wrap justify-center'>

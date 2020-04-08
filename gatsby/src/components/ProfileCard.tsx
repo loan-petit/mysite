@@ -13,6 +13,8 @@ type ProfileCardProps = {
  * Profile Card component
  */
 const ProfileCard: React.FunctionComponent<ProfileCardProps> = ({ data }) => {
+  if (!data) return (<div/>);
+
   return (
     <section className='relative py-20 bg-gray-300'>
       <div className='container px-4 mx-auto'>
