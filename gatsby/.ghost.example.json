@@ -1,0 +1,4 @@
+{
+  "apiUrl": "API URL without trailing slash",
+  "contentApiKey": "Content API key accessible from Ghost integrations"
+}

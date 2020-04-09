@@ -1,0 +1,65 @@
+version: "3.7"
+
+services:
+  ghost:
+    image: ghost:alpine
+    depends_on:
+      - db
+    ports:
+      - "8080:2368"
+    secrets:
+      - MYSQL_PASSWORD
+    environment:
+      NODE_ENV: production
+      url: http://loanpetit.com:8080
+      database__client: mysql
+      database__connection__host: db
+      database__connection__database: ghost
+      database__connection__user: ghost
+      database__connection__password_FILE: /run/secrets/MYSQL_PASSWORD
+    configs:
+      - source: entrypoint
+        target: /usr/local/bin/docker-entrypoint.sh
+        uid: "1000"
+        gid: "1000"
+        mode: 0510
+    deploy:
+      labels:
+        - "app=ghost"
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+
+  db:
+    image: mariadb
+    volumes:
+      - "db-data:/var/lib/mysql"
+    secrets:
+      - MYSQL_ROOT_PASSWORD
+      - MYSQL_PASSWORD
+    environment:
+      MYSQL_DATABASE: ghost
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/MYSQL_ROOT_PASSWORD
+      MYSQL_USER: ghost
+      MYSQL_PASSWORD_FILE: /run/secrets/MYSQL_PASSWORD
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+
+configs:
+  entrypoint:
+    file: ./ghost_entrypoint.sh
+
+secrets:
+  MYSQL_ROOT_PASSWORD:
+    external: true
+  MYSQL_PASSWORD:
+    external: true
+
+volumes:
+  db-data:

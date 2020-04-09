@@ -1,0 +1,12 @@
+version: "3.7"
+
+services:
+  gatsby:
+    image: petitloan/personal-website:gatsby
+    ports:
+      - "80:80"
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
