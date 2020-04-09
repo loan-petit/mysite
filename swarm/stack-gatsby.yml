@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   gatsby:
-    image: petitloan/personal-website:gatsby
+    image: petitloan/mysite:gatsby
     ports:
       - "80:80"
     deploy:
