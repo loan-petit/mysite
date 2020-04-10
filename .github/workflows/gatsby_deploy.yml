@@ -30,8 +30,8 @@ jobs:
         chmod 600 ~/.aws_ec2_key.pem
          
     - name: Create SSH tunnel to remote EC2 Docker socket
-      run: ssh -o StrictHostKeyChecking=no -i ~/.aws_ec2_key.pem -fNL localhost:2376:/var/run/docker.sock ec2-user@ec2-15-188-239-14.eu-west-3.compute.amazonaws.com
+      run: ssh -o StrictHostKeyChecking=no -i ~/.aws_ec2_key.pem -fNL localhost:2376:/var/run/docker.sock ${{ secrets.AWS_EC2_DESTINATION }}
 
     - name: Deploy gatsby service to remote swarm.
-      run: docker -H localhost:2376 stack deploy -c stack-gatsby.yml mysite
+      run: docker -H localhost:2376 stack deploy -c docker-compose.gatsby.yml mysite
       working-directory: ./swarm/
