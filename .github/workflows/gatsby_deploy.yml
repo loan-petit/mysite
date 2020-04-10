@@ -1,0 +1,36 @@
+name: Gatsby service deployment
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Login to Docker Hub
+      run: docker login --username ${{ secrets.DOCKER_USERNAME }} --password ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Load Ghost Content API key
+      run: echo "${{ secrets.GHOST_CONTENT_API_KEY }}" > ./GHOST_CONTENT_API_KEY.txt
+
+    - name: Build and push Gatsby image to Docker Hub
+      run: ./build_and_push_images.sh --secrets-dir .
+      working-directory: ./swarm/
+
+    - name: Load AWS EC2 private key
+      run: |
+        echo "${{ secrets.AWS_EC2_KEY }}" > ~/.aws_ec2_key.pem
+        chmod 600 ~/.aws_ec2_key.pem
+
+    - name: Create SSH tunnel to remote EC2 Docker socket
+      run: ssh -i ~/.aws_ec2_key.pem -NL localhost:2376:/var/run/docker.sock ec2-user@ec2-15-188-239-14.eu-west-3.compute.amazonaws.com
+
+    - name: Deploy gatsby service to remote swarm.
+      run: docker -H localhost:2376 stack deploy -c stack-gatsby.yml mysite
+      working-directory: ./swarm/
