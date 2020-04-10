@@ -18,6 +18,7 @@ jobs:
 
     - name: Load Ghost Content API key
       run: echo "${{ secrets.GHOST_CONTENT_API_KEY }}" > ./GHOST_CONTENT_API_KEY.txt
+      working-directory: ./swarm/
 
     - name: Build and push Gatsby image to Docker Hub
       run: ./build_and_push_images.sh --secrets-dir .
