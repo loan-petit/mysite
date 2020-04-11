@@ -10,8 +10,7 @@ services:
     secrets:
       - MYSQL_PASSWORD
     environment:
-      NODE_ENV: production
-      url: http://loanpetit.com:8080
+      url: http://www.loanpetit.com:8080
       database__client: mysql
       database__connection__host: db
       database__connection__database: ghost
@@ -36,7 +35,7 @@ services:
   db:
     image: mariadb
     volumes:
-      - "db-data:/var/lib/mysql"
+      - "db_data:/var/lib/mysql"
     secrets:
       - MYSQL_ROOT_PASSWORD
       - MYSQL_PASSWORD
@@ -62,4 +61,4 @@ secrets:
     external: true
 
 volumes:
-  db-data:
+  db_data:
