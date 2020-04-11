@@ -4,7 +4,7 @@ set -euo pipefail
 SOURCE_DIR=$(dirname "${BASH_SOURCE[0]}")
 SOURCE_PATH=$(readlink -e $SOURCE_DIR)
 
-SECRETS_DIR="$SOURCE_PATH/.build_secrets"
+SECRETS_DIR="$SOURCE_PATH/.secrets"
 
 if ! [ -x "$(command -v docker)" ]; then
   echo 'Error: docker is not installed.' >&2
@@ -32,7 +32,7 @@ set -- "${POSITIONAL[@]}" # restore positional parameters
 # Build Docker image for Gatsby frontend using secrets stored in SECRETS_DIR.
 DOCKER_BUILDKIT=1 docker build --no-cache --progress=plain \
   --tag mysite:gatsby \
-  --build-arg GHOST_API_URL=http://www.loanpetit.com:8080 \
+  --build-arg GHOST_API_URL=https://www.loanpetit.com:2368 \
   --secret id=GHOST_CONTENT_API_KEY,src=$SECRETS_DIR/GHOST_CONTENT_API_KEY.txt \
   $SOURCE_DIR/../gatsby
 

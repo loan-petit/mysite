@@ -1,2 +1,2 @@
-.build_secrets/*
-!.build_secrets/.gitkeep
+.secrets/*
+!.secrets/.gitkeep

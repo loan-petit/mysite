@@ -33,5 +33,5 @@ jobs:
       run: ssh -o StrictHostKeyChecking=no -i ~/.aws_ec2_key.pem -fNL localhost:2376:/var/run/docker.sock ${{ secrets.AWS_EC2_DESTINATION }}
 
     - name: Deploy gatsby service to remote swarm.
-      run: docker -H localhost:2376 stack deploy -c docker-compose.gatsby.yml mysite
+      run: docker -H localhost:2376 stack deploy -c docker-compose.traefik.yml -c docker-compose.ghost.yml -c docker-compose.gatsby.yml mysite
       working-directory: ./swarm/
