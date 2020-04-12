@@ -20,8 +20,8 @@ const Services = () => {
           </div>
           <h3>Mobile and web applications</h3>
           <p>
-            I will develop both, with Flutter or React based on your
-            preferences.
+            I will develop beautiful and impactful websites or applications with
+            Flutter or React depending on your preferences.
           </p>
         </div>
 
@@ -32,8 +32,8 @@ const Services = () => {
           </div>
           <h3>DevOps</h3>
           <p>
-            I will improve and automate the delivery of your software using
-            GitHub Actions, Docker and Ansible.
+            I will automate the delivery of your software and improve your
+            systems scalability using GitHub Actions, Docker Swarm.
           </p>
         </div>
       </div>

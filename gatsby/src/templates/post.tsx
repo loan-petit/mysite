@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
-import Helmet from 'react-helmet'
+import { Helmet } from 'react-helmet'
 import * as moment from 'moment'
 import { readingTime as readingTimeHelper } from '@tryghost/helpers'
 import * as GhostContentApi from 'tryghost__content-api'

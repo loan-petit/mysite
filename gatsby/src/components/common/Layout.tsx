@@ -1,5 +1,5 @@
 import React from 'react'
-import Helmet from 'react-helmet'
+import { Helmet } from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 import * as GhostContentApi from 'tryghost__content-api'
 
@@ -54,6 +54,7 @@ const DefaultLayout: React.FunctionComponent<DefaultLayoutProps> = ({
 
       <header>
         <Navbar data={site} />
+        <div className='h-16'></div>
         {isHome && (
           <figure
             className='relative w-full bg-center bg-cover vh-48 lg:vh-32'
@@ -93,13 +94,6 @@ const DefaultLayoutSettingsQuery = props => (
           edges {
             node {
               ...GhostSettingsFields
-            }
-          }
-        }
-        file(relativePath: { eq: "ghost-icon.png" }) {
-          childImageSharp {
-            fixed(width: 30, height: 30) {
-              ...GatsbyImageSharpFixed
             }
           }
         }

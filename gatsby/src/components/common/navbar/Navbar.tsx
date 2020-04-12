@@ -26,14 +26,11 @@ const Navbar: React.FunctionComponent<NavbarProps> = ({ data }) => {
     <nav className='fixed z-10 w-full'>
       <div className='flex flex-wrap items-center justify-between px-2 py-3 bg-white'>
         <div className='container flex flex-wrap items-center justify-between px-4 mx-auto'>
-          <div className='relative flex justify-between w-full lg:w-auto lg:static lg:block lg:justify-start'>
+          <div className='relative flex items-center justify-between w-full lg:w-auto'>
             {/* Title */}
             <Link to='/' className='mr-4 nav-text'>
-              {data.logo ? (
-                <img src={data.logo} alt={data.title} />
-              ) : (
-                data.title
-              )}
+              {data.title}
+              <span className='text-base text-accent'>.</span>
             </Link>
 
             {/* Menu Button */}
@@ -47,7 +44,7 @@ const Navbar: React.FunctionComponent<NavbarProps> = ({ data }) => {
           </div>
 
           {/* Navigation Buttons */}
-          <div className={'bg-white lg:flex' + (!navbarOpen ? ' hidden' : '')}>
+          <div className={'lg:flex' + (!navbarOpen ? ' hidden' : '')}>
             <ul className='flex flex-col mr-auto list-none lg:flex-row'>
               {data.navigation.map((navItem, i) => (
                 <NavigationButton
