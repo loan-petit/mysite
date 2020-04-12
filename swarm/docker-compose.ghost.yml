@@ -5,6 +5,8 @@ services:
     image: ghost:alpine
     depends_on:
       - db
+    volumes:
+      - "ghost_media_storage:/var/lib/ghost/content"
     secrets:
       - MYSQL_PASSWORD
     environment:
@@ -25,7 +27,7 @@ services:
         - "traefik.enable=true"
         - "traefik.http.services.ghost.loadbalancer.server.port=2368"
         - "traefik.http.routers.ghost.rule=Host(`www.loanpetit.com`)"
-        - "traefik.http.routers.ghost.entrypoints=ghostsecure"
+        - "traefik.http.routers.ghost.entrypoints=ghost"
         - "traefik.http.routers.ghost.tls.certresolver=default"
       mode: replicated
       replicas: 1
@@ -64,3 +66,4 @@ secrets:
 
 volumes:
   db_data:
+  ghost_media_storage:

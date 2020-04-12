@@ -40,4 +40,3 @@ DOCKER_BUILDKIT=1 docker build --no-cache --progress=plain \
 GATSBY_IMAGE_ID=$(docker image inspect mysite:gatsby --format='{{ .Id }}')
 docker tag $GATSBY_IMAGE_ID petitloan/mysite:gatsby
 docker push petitloan/mysite
-

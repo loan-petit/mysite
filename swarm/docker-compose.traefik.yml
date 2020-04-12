@@ -5,13 +5,14 @@ services:
     image: "traefik:v2.2"
     command:
       #- "--log.level=DEBUG"
-      - "--api.insecure=true"
+      - "--api.dashboard=true"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
       - "--providers.docker.swarmMode=true"
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
-      - "--entrypoints.ghostsecure.address=:2368"
+      - "--entrypoints.ghost.address=:2368"
+      - "--entrypoints.traefik.address=:8080"
       - "--certificatesresolvers.default.acme.httpchallenge=true"
       - "--certificatesresolvers.default.acme.httpchallenge.entrypoint=web"
       #- "--certificatesresolvers.default.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
@@ -22,6 +23,8 @@ services:
       - "443:443"
       - "2368:2368"
       - "8080:8080"
+    secrets:
+      - TRAEFIK_USERS
     volumes:
       - "letsencrypt:/letsencrypt"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
@@ -29,7 +32,19 @@ services:
       placement:
         constraints:
           - node.role == manager
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.api.rule=Host(`www.loanpetit.com`)"
+        - "traefik.http.routers.api.service=api@internal"
+        - "traefik.http.routers.api.entrypoints=traefik"
+        - "traefik.http.routers.api.tls.certresolver=default"
+        - "traefik.http.routers.api.middlewares=auth"
+        - "traefik.http.middlewares.auth.basicauth.usersfile=/run/secrets/TRAEFIK_USERS"
+        - "traefik.http.services.dashboard.loadbalancer.server.port=8080"
 
+secrets:
+  TRAEFIK_USERS:
+    external: true
 
 volumes:
   letsencrypt:
