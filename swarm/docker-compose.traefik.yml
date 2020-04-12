@@ -34,12 +34,14 @@ services:
           - node.role == manager
       labels:
         - "traefik.enable=true"
+        # Redirect HTTP to HTTPS
         - "traefik.http.middlewares.httpsredirect.redirectscheme.scheme=https"
         - "traefik.http.middlewares.httpsredirect.redirectscheme.permanent=true"
-        - "traefik.http.routers.httpsredirect.rule=hostregexp(`{host:.+}`)"
+        - "traefik.http.routers.httpsredirect.rule=HostRegexp(`{host:.*\\.?loanpetit.com}`)"
         - "traefik.http.routers.httpsredirect.entrypoints=web"
         - "traefik.http.routers.httpsredirect.middlewares=httpsredirect"
-        - "traefik.http.routers.api.rule=Host(`www.loanpetit.com`)"
+        # Expose secured dashboard
+        - "traefik.http.routers.api.rule=HostRegexp(`{host:(?:www\\.)?loanpetit.com}`)"
         - "traefik.http.routers.api.service=api@internal"
         - "traefik.http.routers.api.entrypoints=traefik"
         - "traefik.http.routers.api.tls.certresolver=default"

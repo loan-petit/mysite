@@ -26,7 +26,7 @@ services:
       labels:
         - "traefik.enable=true"
         - "traefik.http.services.ghost.loadbalancer.server.port=2368"
-        - "traefik.http.routers.ghost.rule=Host(`www.loanpetit.com`)"
+        - "traefik.http.routers.ghost.rule=HostRegexp(`{host:(?:www\\.)?loanpetit.com}`)"
         - "traefik.http.routers.ghost.entrypoints=ghost"
         - "traefik.http.routers.ghost.tls.certresolver=default"
       mode: replicated
