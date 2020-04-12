@@ -34,6 +34,11 @@ services:
           - node.role == manager
       labels:
         - "traefik.enable=true"
+        - "traefik.http.middlewares.httpsredirect.redirectscheme.scheme=https"
+        - "traefik.http.middlewares.httpsredirect.redirectscheme.permanent=true"
+        - "traefik.http.routers.httpsredirect.rule=hostregexp(`{host:.+}`)"
+        - "traefik.http.routers.httpsredirect.entrypoints=web"
+        - "traefik.http.routers.httpsredirect.middlewares=httpsredirect"
         - "traefik.http.routers.api.rule=Host(`www.loanpetit.com`)"
         - "traefik.http.routers.api.service=api@internal"
         - "traefik.http.routers.api.entrypoints=traefik"
