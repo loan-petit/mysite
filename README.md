@@ -1,6 +1,6 @@
 # Loan PETIT
 
-This website is available online at <https://loanpetit.com/>, check it out.
+This website is available online at <https://www.loanpetit.com/>, check it out.
 
 ## Contact me
 
