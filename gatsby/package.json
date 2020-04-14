@@ -22,6 +22,7 @@
     "@fortawesome/fontawesome-free": "^5.13.0",
     "@tryghost/helpers": "1.1.26",
     "@tryghost/helpers-gatsby": "1.0.30",
+    "axios": "^0.19.2",
     "cheerio": "1.0.0-rc.3",
     "gatsby": "2.20.18",
     "gatsby-awesome-pagination": "0.3.5",
@@ -45,9 +46,11 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-helmet": "6.0.0",
-    "react-scroll": "^1.7.16"
+    "react-scroll": "^1.7.16",
+    "tailwindcss": "^1.2.0"
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "@types/node": "^13.11.1",
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.6",
@@ -58,7 +61,6 @@
     "eslint-plugin-ghost": "1.1.0",
     "eslint-plugin-react": "7.19.0",
     "prettier-standard": "^16.2.1",
-    "tailwindcss": "^1.2.0",
     "typescript": "^3.8.3"
   }
 }

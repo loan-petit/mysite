@@ -1,6 +1,8 @@
 # syntax = docker/dockerfile:1.0-experimental
 FROM node:alpine as build
 
+ENV NODE_ENV production
+
 WORKDIR /app
 
 RUN apk update && apk upgrade && \

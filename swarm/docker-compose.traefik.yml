@@ -4,18 +4,19 @@ services:
   traefik:
     image: "traefik:v2.2"
     command:
-      #- "--log.level=DEBUG"
       - "--api.dashboard=true"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
       - "--providers.docker.swarmMode=true"
+      # Entrypoints
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
       - "--entrypoints.ghost.address=:2368"
+      - "--entrypoints.backend.address=:8081"
       - "--entrypoints.traefik.address=:8080"
+      # ACME challenge for SSL certificate creation
       - "--certificatesresolvers.default.acme.httpchallenge=true"
       - "--certificatesresolvers.default.acme.httpchallenge.entrypoint=web"
-      #- "--certificatesresolvers.default.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
       - "--certificatesresolvers.default.acme.email=petit.loan1@gmail.com"
       - "--certificatesresolvers.default.acme.storage=/letsencrypt/acme.json"
     ports:
@@ -23,6 +24,7 @@ services:
       - "443:443"
       - "2368:2368"
       - "8080:8080"
+      - "8081:8081"
     secrets:
       - TRAEFIK_USERS
     volumes:

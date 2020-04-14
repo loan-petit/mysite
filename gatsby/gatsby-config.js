@@ -1,21 +1,22 @@
-const path = require(`path`)
+const path = require(`path`);
 
-const config = require(`./src/utils/siteConfig`)
+const config = require(`./src/utils/siteConfig`);
 
-const ghostConfig =
-  process.env.NODE_ENV === `development`
-    ? require(`./.ghost`)
-    : {
-        apiUrl: process.env.GHOST_API_URL,
-        contentApiKey: process.env.GHOST_CONTENT_API_KEY
-      }
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
 
-const { apiUrl, contentApiKey } = ghostConfig
+const ghostConfig = {
+  apiUrl: process.env.GHOST_API_URL,
+  contentApiKey: process.env.GHOST_CONTENT_API_KEY,
+};
+
+const { apiUrl, contentApiKey } = ghostConfig;
 
 if (!apiUrl || !contentApiKey || contentApiKey.match(/<key>/)) {
   throw new Error(
-    `GHOST_API_URL and GHOST_CONTENT_API_KEY are required to build. Check the README.`
-  ) // eslint-disable-line
+    `GHOST_API_URL and GHOST_CONTENT_API_KEY are required to build.`
+  ); // eslint-disable-line
 }
 
 /**
@@ -27,19 +28,19 @@ if (!apiUrl || !contentApiKey || contentApiKey.match(/<key>/)) {
  */
 module.exports = {
   siteMetadata: {
-    siteUrl: config.siteUrl
+    siteUrl: config.siteUrl,
   },
   plugins: [
-    'gatsby-plugin-typescript',
+    "gatsby-plugin-typescript",
     {
       resolve: `gatsby-plugin-sass`,
       options: {
-        includePaths: ['src/styles/'],
+        includePaths: ["src/styles/"],
         postCssPlugins: [
-          require('tailwindcss'),
-          require('./tailwind.config.js') // Optional: Load custom Tailwind CSS configuration
-        ]
-      }
+          require("tailwindcss"),
+          require("./tailwind.config.js"), // Optional: Load custom Tailwind CSS configuration
+        ],
+      },
     },
     /**
      *  Content Plugins
@@ -48,14 +49,14 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: path.join(__dirname, `src`, `pages`),
-        name: `pages`
-      }
+        name: `pages`,
+      },
     },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-source-ghost`,
-      options: ghostConfig
+      options: ghostConfig,
     },
     /**
      *  Utility Plugins
@@ -81,8 +82,8 @@ module.exports = {
                     }
                   }
                 }
-              `
-      }
+              `,
+      },
     },
     {
       resolve: `gatsby-plugin-advanced-sitemap`,
@@ -105,22 +106,22 @@ module.exports = {
                 }`,
         mapping: {
           allGhostPost: {
-            sitemap: `posts`
-          }
+            sitemap: `posts`,
+          },
         },
         exclude: [
           `/dev-404-page`,
           `/404`,
           `/404.html`,
-          `/offline-plugin-app-shell-fallback`
+          `/offline-plugin-app-shell-fallback`,
         ],
         createLinkInHead: true,
-        addUncaughtPages: true
-      }
+        addUncaughtPages: true,
+      },
     },
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-force-trailing-slashes`,
-    `gatsby-plugin-offline`
-  ]
-}
+    `gatsby-plugin-offline`,
+  ],
+};
