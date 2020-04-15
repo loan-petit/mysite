@@ -24,7 +24,6 @@ type PostProps = {
 const Post: React.FunctionComponent<PostProps> = ({ data, location }) => {
   const post = data.ghostPost;
   const readingTime = readingTimeHelper(post);
-  console.log(post.html);
 
   return (
     <>

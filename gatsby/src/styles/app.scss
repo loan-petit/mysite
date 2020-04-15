@@ -71,11 +71,15 @@ small {
 
 article {
   h2 {
-    @apply pt-8 pb-2 text-2xl font-semibold text-gray-800;
+    @apply pt-8 text-2xl font-semibold text-gray-800;
   }
 
   h3 {
-    @apply pt-6 pb-2 text-lg font-semibold text-gray-800;
+    @apply pt-6 text-xl font-semibold text-gray-800;
+  }
+
+  p {
+    @apply text-lg pb-4 text-gray-700;
   }
 
   figure {
@@ -87,7 +91,7 @@ article {
   }
 
   blockquote {
-    @apply my-2 p-2 border-l-4 border-accent leading-relaxed text-gray-700;
+    @apply my-2 p-4 border-l-4 border-accent leading-relaxed text-gray-700 text-lg;
   }
 }
 
