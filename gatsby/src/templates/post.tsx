@@ -32,13 +32,6 @@ const Post: React.FunctionComponent<PostProps> = ({ data, location }) => {
         <style type='text/css'>{`${post.codeinjection_styles}`}</style>
       </Helmet>
       <Layout location={location}>
-        {/* Feature image */}
-        {post.feature_image && (
-          <figure className='flex justify-center w-full bg-center bg-cover'>
-            <img src={post.feature_image} alt={post.title} />
-          </figure>
-        )}
-
         {/* Article content */}
         <div className='container flex justify-center mx-auto'>
           <article className='w-full px-6 mt-12 md:w-8/12'>
@@ -50,6 +43,13 @@ const Post: React.FunctionComponent<PostProps> = ({ data, location }) => {
               </Link>{' '}
               • {readingTime}
             </h5>
+
+            {/* Feature image */}
+            {post.feature_image && (
+              <figure className='container w-full mx-auto mb-12 bg-center bg-cover'>
+                <img src={post.feature_image} alt={post.title} />
+              </figure>
+            )}
 
             <section
               className='content-body load-external-scripts'

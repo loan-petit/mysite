@@ -20,8 +20,8 @@ const Services = () => {
           </div>
           <h3>Mobile and web applications</h3>
           <p>
-            I will develop beautiful and impactful websites or applications with
-            Flutter or React depending on your preferences.
+            I will develop beautiful and impactful websites and applications,
+            with Flutter or React depending on your preferences.
           </p>
         </div>
 
@@ -59,7 +59,7 @@ const Services = () => {
           <h3>Chatbot</h3>
           <p>
             With Dialogflow, I will develop and deploy chatbots on voice
-            assistant or messaging platforms.
+            assistant and messaging platforms.
           </p>
         </div>
       </div>
