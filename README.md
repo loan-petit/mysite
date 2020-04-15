@@ -20,7 +20,7 @@ It triggers when something is pushed onto master.
 The application is deployed to a Docker Swarm using Docker images saved in [petitloan/mysite](https://hub.docker.com/r/petitloan/mysite/) Docker Hub public repository.
 
 When the deployment is finished, the following services should be running on the hosting server.
-- **Traefik** (named *traefik*): Based on traefik:v2.2
-- **Gatsby.js frontend** (named *gatsby*): Based on petitloan/mysite:gatsby
-- **Ghost CMS** (named *ghost*): Based on ghost:alpine
-- **MariaDB** (named *db*): Based on mariadb
+- **Traefik cloud native router** (named *traefik*): Based on traefik:v2.2
+- **Gatsby.js frontend based on React** (named *gatsby*): Based on petitloan/mysite:gatsby
+- **Ghost headless CMS** (named *ghost*): Based on ghost:alpine
+- **MariaDB database** (named *db*): Based on mariadb
