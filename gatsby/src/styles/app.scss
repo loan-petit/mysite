@@ -1,11 +1,11 @@
 @charset 'utf-8';
 
 // Use Font Awesome
-$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
-@import '~@fortawesome/fontawesome-free/scss/fontawesome';
-@import '~@fortawesome/fontawesome-free/scss/brands';
-@import '~@fortawesome/fontawesome-free/scss/regular';
-@import '~@fortawesome/fontawesome-free/scss/solid';
+$fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
 
 // Use Tailwind
 @tailwind base;
@@ -35,6 +35,19 @@ p {
   @apply leading-relaxed pt-2 text-gray-700;
 }
 
+a,
+Link {
+  @apply text-accent;
+
+  &:hover {
+    @apply text-accent-lighter;
+  }
+
+  &:focus {
+    @apply text-accent-lighter;
+  }
+}
+
 label {
   @apply block pb-2 text-xs font-bold text-gray-700 uppercase;
 }
@@ -54,6 +67,28 @@ textarea {
 
 small {
   @apply text-sm text-center text-gray-300;
+}
+
+article {
+  h2 {
+    @apply pt-8 pb-2 text-2xl font-semibold text-gray-800;
+  }
+
+  h3 {
+    @apply pt-6 pb-2 text-lg font-semibold text-gray-800;
+  }
+
+  figure {
+    @apply w-full mt-12;
+  }
+
+  figcaption {
+    @apply leading-relaxed pt-2 text-gray-600 text-center;
+  }
+
+  blockquote {
+    @apply my-2 p-2 border-l-4 border-accent leading-relaxed text-gray-700;
+  }
 }
 
 // Import tailwind components
@@ -81,18 +116,6 @@ small {
 
   &:focus {
     @apply outline-none;
-  }
-}
-
-.link {
-  @apply text-accent;
-
-  &:hover {
-    @apply text-accent-lighter;
-  }
-
-  &:focus {
-    @apply text-accent-lighter;
   }
 }
 

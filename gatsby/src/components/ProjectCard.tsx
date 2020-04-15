@@ -55,7 +55,7 @@ const ProjectCard: React.FunctionComponent<ProjectCardProps> = ({
           <div className='p-12 md:px-16'>
             <h3 className='pt-0 mb-4'>{project.title}</h3>
             <p>{project.excerpt}</p>
-            <Link className='flex mt-4 link' to={url}>
+            <Link className='flex mt-4' to={url}>
               Learn more
             </Link>
           </div>

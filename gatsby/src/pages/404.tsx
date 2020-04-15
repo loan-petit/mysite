@@ -8,7 +8,7 @@ const NotFoundPage = () => (
       <h1>Error 404</h1>
       <p>
         Page not found,{' '}
-        <Link className='link' to='/'>
+        <Link to='/'>
           return home
         </Link>{' '}
         to start over
