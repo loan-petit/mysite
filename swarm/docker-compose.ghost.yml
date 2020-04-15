@@ -5,8 +5,6 @@ services:
     image: ghost:alpine
     depends_on:
       - db
-    volumes:
-      - "ghost_media_storage:/var/lib/ghost/content"
     secrets:
       - MYSQL_PASSWORD
     environment:
@@ -16,6 +14,8 @@ services:
       database__connection__database: ghost
       database__connection__user: ghost
       database__connection__password_FILE: /run/secrets/MYSQL_PASSWORD
+    volumes:
+      - "ghost_media_storage:/var/lib/ghost/content"
     configs:
       - source: entrypoint
         target: /usr/local/bin/docker-entrypoint.sh
@@ -26,11 +26,9 @@ services:
       labels:
         - "traefik.enable=true"
         - "traefik.http.services.ghost.loadbalancer.server.port=2368"
-        - "traefik.http.routers.ghost.rule=HostRegexp(`{host:(?:www\\.)?loanpetit.com}`)"
+        - "traefik.http.routers.ghost.rule=HostRegexp(`{host:(?:www.)?loanpetit.com}`)"
         - "traefik.http.routers.ghost.entrypoints=ghost"
         - "traefik.http.routers.ghost.tls.certresolver=default"
-      mode: replicated
-      replicas: 1
       restart_policy:
         condition: on-failure
         delay: 5s
@@ -38,8 +36,6 @@ services:
 
   db:
     image: mariadb
-    volumes:
-      - "db_data:/var/lib/mysql"
     secrets:
       - MYSQL_ROOT_PASSWORD
       - MYSQL_PASSWORD
@@ -48,6 +44,8 @@ services:
       MYSQL_ROOT_PASSWORD_FILE: /run/secrets/MYSQL_ROOT_PASSWORD
       MYSQL_USER: ghost
       MYSQL_PASSWORD_FILE: /run/secrets/MYSQL_PASSWORD
+    volumes:
+      - "db_data:/var/lib/mysql"
     deploy:
       restart_policy:
         condition: on-failure

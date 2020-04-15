@@ -7,18 +7,18 @@ services:
       - AWS_ACCESS_KEY_ID
       - AWS_SECRET_ACCESS_KEY
     deploy:
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 3
       labels:
         - "traefik.enable=true"
         - "traefik.http.services.sendemail.loadbalancer.server.port=3000"
-        - "traefik.http.routers.sendemail.rule=HostRegexp(`{host:(?:www\\.)?loanpetit.com}`) && PathPrefix(`/sendEmail`)"
+        - "traefik.http.routers.sendemail.rule=HostRegexp(`{host:(?:www.)?loanpetit.com}`) && PathPrefix(`/sendEmail`)"
         - "traefik.http.routers.sendemail.entrypoints=backend"
         - "traefik.http.routers.sendemail.tls.certresolver=default"
         - "traefik.http.routers.sendemail.middlewares=sendemail-stripprefix"
         - "traefik.http.middlewares.sendemail-stripprefix.stripprefix.prefixes=/sendEmail"
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
 
 secrets:
   AWS_ACCESS_KEY_ID:

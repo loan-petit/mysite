@@ -17,11 +17,11 @@ jobs:
       run: docker login --username ${{ secrets.DOCKER_USERNAME }} --password ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Load Ghost Content API key
-      run: echo "${{ secrets.GHOST_CONTENT_API_KEY }}" > ./GHOST_CONTENT_API_KEY.txt
+      run: echo "${{ secrets.GHOST_CONTENT_API_KEY }}" > ./.secrets/GHOST_CONTENT_API_KEY.txt
       working-directory: ./swarm/
 
     - name: Build and push Gatsby image to Docker Hub
-      run: ./build_and_push_images.sh --secrets-dir .
+      run: ./build_and_push_images.sh
       working-directory: ./swarm/
 
     - name: Load AWS EC2 private key

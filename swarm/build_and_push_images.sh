@@ -7,8 +7,7 @@ SOURCE_PATH=$(readlink -e $SOURCE_DIR)
 SECRETS_DIR="$SOURCE_PATH/.secrets"
 
 function usage() {
-  echo "Usage: $0 SERVICE..."
-  echo "  --secrets-dir     Directory where secrets are stored"
+  echo "Usage: $0 SERVICE_TO_BUILD..."
   exit 1
 }
 
@@ -26,10 +25,6 @@ while [[ $# -gt 0 ]]; do
   case $key in
   -h | --help)
     usage
-    ;;
-  --secrets-dir)
-    SECRETS_DIR="$2"
-    shift 2
     ;;
   *)                   # unknown option
     POSITIONAL+=("$1") # save it in an array for later
@@ -50,7 +45,7 @@ fi
 for service in "${POSITIONAL[@]}"; do
   if [ "$service" == "gatsby" ]; then
     # Build Docker image for 'gatsby' service.
-    DOCKER_BUILDKIT=1 docker build --no-cache --progress=plain \
+    DOCKER_BUILDKIT=1 docker build --no-cache \
       --tag mysite:gatsby \
       --build-arg GHOST_API_URL=https://www.loanpetit.com:2368 \
       --secret id=GHOST_CONTENT_API_KEY,src=$SECRETS_DIR/GHOST_CONTENT_API_KEY.txt \

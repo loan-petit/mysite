@@ -12,8 +12,8 @@ services:
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
       - "--entrypoints.ghost.address=:2368"
-      - "--entrypoints.backend.address=:8081"
       - "--entrypoints.traefik.address=:8080"
+      - "--entrypoints.backend.address=:8081"
       # ACME challenge for SSL certificate creation
       - "--certificatesresolvers.default.acme.httpchallenge=true"
       - "--certificatesresolvers.default.acme.httpchallenge.entrypoint=web"
@@ -39,14 +39,16 @@ services:
         # Redirect HTTP to HTTPS
         - "traefik.http.middlewares.httpsredirect.redirectscheme.scheme=https"
         - "traefik.http.middlewares.httpsredirect.redirectscheme.permanent=true"
-        - "traefik.http.routers.httpsredirect.rule=HostRegexp(`{host:.*\\.?loanpetit.com}`)"
+        - "traefik.http.routers.httpsredirect.rule=HostRegexp(`{host:.*.?loanpetit.com}`)"
         - "traefik.http.routers.httpsredirect.entrypoints=web"
         - "traefik.http.routers.httpsredirect.middlewares=httpsredirect"
         # Expose secured dashboard
-        - "traefik.http.routers.api.rule=HostRegexp(`{host:(?:www\\.)?loanpetit.com}`)"
+        - "traefik.http.routers.api.rule=HostRegexp(`{host:(?:www.)?loanpetit.com}`)"
         - "traefik.http.routers.api.service=api@internal"
         - "traefik.http.routers.api.entrypoints=traefik"
         - "traefik.http.routers.api.tls.certresolver=default"
+        - "traefik.http.routers.api.tls.domains[0].main=loanpetit.com"
+        - "traefik.http.routers.api.tls.domains[1].main=www.loanpetit.com"
         - "traefik.http.routers.api.middlewares=auth"
         - "traefik.http.middlewares.auth.basicauth.usersfile=/run/secrets/TRAEFIK_USERS"
         - "traefik.http.services.dashboard.loadbalancer.server.port=8080"

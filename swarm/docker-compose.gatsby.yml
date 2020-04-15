@@ -4,13 +4,13 @@ services:
   gatsby:
     image: petitloan/mysite:gatsby
     deploy:
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.services.gatsby.loadbalancer.server.port=80"
+        - "traefik.http.routers.gatsby.rule=HostRegexp(`{host:(?:www.)?loanpetit.com}`)"
+        - "traefik.http.routers.gatsby.entrypoints=websecure"
+        - "traefik.http.routers.gatsby.tls.certresolver=default"
       restart_policy:
         condition: on-failure
         delay: 5s
         max_attempts: 3
-      labels:
-        - "traefik.enable=true"
-        - "traefik.http.services.gatsby.loadbalancer.server.port=80"
-        - "traefik.http.routers.gatsby.rule=HostRegexp(`{host:(?:www\\.)?loanpetit.com}`)"
-        - "traefik.http.routers.gatsby.entrypoints=websecure"
-        - "traefik.http.routers.gatsby.tls.certresolver=default"

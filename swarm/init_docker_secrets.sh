@@ -92,11 +92,11 @@ if [ ${AWS_ACCESS_KEY_ID+x} ] && [ ${AWS_SECRET_ACCESS_KEY+x} ]; then
 fi
 
 # Generate MYSQL database random secrets
-secrets=(
+SECRETS=(
   MYSQL_ROOT_PASSWORD
   MYSQL_PASSWORD
 )
-for secret in "${secrets[@]}"; do
+for secret in "${SECRETS[@]}"; do
   if [ -z "$(docker $DOCKER_HOST_LIST secret ls -f name=$secret -q)" ]; then
     cat /dev/urandom |
       tr -dc '0-9a-zA-Z!@#$%^&*_+-' |
