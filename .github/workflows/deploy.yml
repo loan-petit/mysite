@@ -1,4 +1,4 @@
-name: Gatsby service deployment
+name: Deployment pipeline
 
 on:
   push:
@@ -20,7 +20,7 @@ jobs:
       run: echo "${{ secrets.GHOST_CONTENT_API_KEY }}" > ./.secrets/GHOST_CONTENT_API_KEY.txt
       working-directory: ./swarm/
 
-    - name: Build and push Gatsby image to Docker Hub
+    - name: Build and push images to Docker Hub
       run: ./build_and_push_images.sh
       working-directory: ./swarm/
 
@@ -32,6 +32,6 @@ jobs:
     - name: Create SSH tunnel to remote EC2 Docker socket
       run: ssh -o StrictHostKeyChecking=no -i ~/.aws_ec2_key.pem -fNL localhost:2376:/var/run/docker.sock ${{ secrets.AWS_EC2_DESTINATION }}
 
-    - name: Deploy gatsby service to remote swarm.
+    - name: Deploy services to the remote swarm.
       run: docker -H localhost:2376 stack deploy $(for f in docker-compose.*.yml; do echo -n "-c $f "; done) mysite
       working-directory: ./swarm/
