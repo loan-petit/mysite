@@ -7,8 +7,8 @@ module.exports = {
   siteDescriptionMeta:
     "I'm a freelance developer passionate about entrepreneurship and the digital world.", // This allows an alternative site description for meta data for pages.
 
-  shareImageWidth: 1000, // Change to the width of your default share image
-  shareImageHeight: 523, // Change to the height of your default share image
+  shareImageWidth: 1200, // Change to the width of your default share image
+  shareImageHeight: 627, // Change to the height of your default share image
 
   shortTitle: `Loan PETIT`, // Used for App manifest e.g. Mobile Home Screen
   siteIcon: `favicon.png`, // Logo in /static dir used for SEO, RSS, and App manifest

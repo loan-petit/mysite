@@ -129,7 +129,7 @@ const WebsiteMeta: React.FunctionComponent<WebsiteMetaProps> = ({
           {JSON.stringify(jsonLd, undefined, 4)}
         </script>
       </Helmet>
-      <ImageMeta image={shareImage} />
+      <ImageMeta image='/landscape_logo.png' />
     </>
   )
 }
