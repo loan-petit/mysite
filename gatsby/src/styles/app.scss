@@ -82,6 +82,13 @@ article {
     @apply text-lg pb-4 text-gray-700;
   }
 
+  ul {
+    li {
+      @apply ml-6 text-lg pb-4 text-gray-700;
+      list-style-type: disc;
+    }
+  }
+
   figure {
     @apply w-full mt-12;
   }
