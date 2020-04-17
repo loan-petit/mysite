@@ -29,6 +29,8 @@ services:
         - "traefik.http.routers.ghost.rule=HostRegexp(`{host:(?:www.)?loanpetit.com}`)"
         - "traefik.http.routers.ghost.entrypoints=ghost"
         - "traefik.http.routers.ghost.tls.certresolver=default"
+        - "traefik.http.routers.ghost.middlewares=ghost-compress"
+        - "traefik.http.middlewares.ghost-compress.compress=true"
       restart_policy:
         condition: on-failure
         delay: 5s

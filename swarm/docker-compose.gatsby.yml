@@ -10,6 +10,8 @@ services:
         - "traefik.http.routers.gatsby.rule=HostRegexp(`{host:(?:www.)?loanpetit.com}`)"
         - "traefik.http.routers.gatsby.entrypoints=websecure"
         - "traefik.http.routers.gatsby.tls.certresolver=default"
+        - "traefik.http.routers.gatsby.middlewares=gatsby-compress"
+        - "traefik.http.middlewares.gatsby-compress.compress=true"
       restart_policy:
         condition: on-failure
         delay: 5s
