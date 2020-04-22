@@ -6,7 +6,7 @@ ENV NODE_ENV production
 WORKDIR /app
 
 RUN apk update && apk upgrade && \
-    apk add --no-cache git openssh
+    apk add --no-cache git openssh python make g++
 
 # Install dependencies before pushing the rest of the code in order to use
 # cached dependencies when a file other than the package.json is changed in

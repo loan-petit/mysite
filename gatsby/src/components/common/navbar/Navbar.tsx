@@ -28,7 +28,7 @@ const Navbar: React.FunctionComponent<NavbarProps> = ({ data }) => {
         <div className='container flex flex-wrap items-center justify-between px-4 mx-auto'>
           <div className='relative flex items-center justify-between w-full lg:w-auto'>
             {/* Title */}
-            <Link to='/' className='mr-4 nav-text'>
+            <Link to='/' className='mr-4 nav-text notranslate'>
               {data.title}
               <span className='text-base text-accent'>.</span>
             </Link>

@@ -102,7 +102,7 @@ const WebsiteMeta: React.FunctionComponent<WebsiteMetaProps> = ({
   return (
     <>
       <Helmet>
-        <title>{title}</title>
+        <title className='notranslate'>{title}</title>
         <meta name='description' content={description} />
         <link rel='canonical' href={canonical} />
         <meta property='og:site_name' content={settings.title} />

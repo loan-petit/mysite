@@ -20,8 +20,8 @@ const Services = () => {
           </div>
           <h3>Mobile and web applications</h3>
           <p>
-            I will develop beautiful and impactful websites and applications,
-            with Flutter or React depending on your preferences.
+            I develop intuitive and impactful websites and applications, with
+            Flutter or React, depending on your preferences.
           </p>
         </div>
 
@@ -32,8 +32,8 @@ const Services = () => {
           </div>
           <h3>DevOps</h3>
           <p>
-            I will automate the delivery of your software and improve your
-            systems scalability using GitHub Actions, Docker Swarm.
+            I automate software delivery and improve systems scalability using
+            GitHub Actions and Docker Swarm.
           </p>
         </div>
       </div>
@@ -46,8 +46,8 @@ const Services = () => {
           </div>
           <h3>Backend</h3>
           <p>
-            I will develop stable and efficient backend using GraphQL, Prisma
-            and Node.js.
+            I develop stable, secure, and efficient backends using GraphQL,
+            Prisma, and Node.js.
           </p>
         </div>
 
@@ -58,8 +58,8 @@ const Services = () => {
           </div>
           <h3>Chatbot</h3>
           <p>
-            With Dialogflow, I will develop and deploy chatbots on voice
-            assistant and messaging platforms.
+            With Dialogflow, I develop and deploy chatbots on voice assistants
+            and messaging platforms.
           </p>
         </div>
       </div>

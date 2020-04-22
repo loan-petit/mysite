@@ -20,7 +20,7 @@ h2 {
 }
 
 h3 {
-  @apply text-xl pt-5 font-semibold text-gray-800;
+  @apply text-xl pt-4 font-semibold text-gray-800;
 }
 
 h4 {
@@ -131,7 +131,7 @@ article {
 }
 
 .service-icon-container {
-  @apply text-accent p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center text-xl;
+  @apply text-accent text-2xl;
 }
 
 .projects-navigation-button {

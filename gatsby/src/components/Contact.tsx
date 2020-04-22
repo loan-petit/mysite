@@ -94,7 +94,7 @@ const Contact = () => {
     <section id='contact-hash' className='relative px-6 py-24 bg-gray-900'>
       <div className='container flex flex-col w-full min-w-0 px-4 mx-auto break-words bg-gray-300 rounded-lg shadow-lg lg:w-5/12'>
         <div className='flex-auto p-5 lg:p-10'>
-          <h2>Want to work with me?</h2>
+          <h2>Contact me</h2>
           <h5>Complete this form and I will get back to you in 24 hours.</h5>
 
           {/* Full Name field */}

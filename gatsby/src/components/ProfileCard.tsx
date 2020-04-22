@@ -29,7 +29,7 @@ const ProfileCard: React.FunctionComponent<ProfileCardProps> = ({ data }) => {
 
           <div className='mt-4 text-center'>
             {/* General informations */}
-            <h1>{data.name}</h1>
+            <h1 className='notranslate'>{data.name}</h1>
             <h4>Freelance developer</h4>
 
             {/* Social links */}
