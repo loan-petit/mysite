@@ -94,8 +94,24 @@ const Contact = () => {
     <section id='contact-hash' className='relative px-6 py-24 bg-gray-900'>
       <div className='container flex flex-col w-full min-w-0 px-4 mx-auto break-words bg-gray-300 rounded-lg shadow-lg lg:w-5/12'>
         <div className='flex-auto p-5 lg:p-10'>
-          <h2>Contact me</h2>
-          <h5>Complete this form and I will get back to you in 24 hours.</h5>
+          <h2>Let's get in touch</h2>
+
+          <h5>
+            You can{' '}
+            <a
+              href='https://www.calendar.com/loanpetit/initial-meeting'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              schedule a meeting
+            </a>{' '}
+            with me.
+          </h5>
+
+          <h5>
+            Otherwise, complete this form and I will get back to you in 24
+            hours.
+          </h5>
 
           {/* Full Name field */}
           <div className='relative w-full mt-8 mb-3'>
