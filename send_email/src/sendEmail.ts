@@ -1,14 +1,16 @@
 import * as AWS from 'aws-sdk'
 
-interface sendEmailBody {
-  toAddresses: [string]
-  html: string
-  subject: string
-  sender: string
-  replyToAddresses: [string]
-}
+import loadAWSConfig from './services/aws'
+import SendEmailBody from './types/SendEmailBody'
 
-const sendEmail = (body: sendEmailBody) => {
+var isAWSInitiated = false
+
+const sendEmail = async (body: SendEmailBody) => {
+  if (!isAWSInitiated) {
+    loadAWSConfig()
+    isAWSInitiated = true
+  }
+
   var params = {
     Destination: {
       ToAddresses: body.toAddresses
@@ -29,8 +31,8 @@ const sendEmail = (body: sendEmailBody) => {
     ReplyToAddresses: body.replyToAddresses
   }
 
-  // Create the promise and SES service object
-  return new AWS.SES().sendEmail(params).promise()
+  // Create SES service object and send the email
+  return await new AWS.SES().sendEmail(params).promise()
 }
 
 export default sendEmail

@@ -3,24 +3,34 @@
   "version": "1.0.0",
   "main": "src/index.js",
   "scripts": {
-    "start": "node dist/index",
+    "start": "DOTENV_CONFIG_PATH=.env node dist/index",
     "clean": "rm -rf dist",
     "build": "npm -s run clean && tsc",
-    "dev": "ts-node-dev --no-notify --respawn --transpileOnly src/index",
+    "dev": "DOTENV_CONFIG_PATH=.env ts-node-dev --no-notify --respawn --transpile-only src/index",
     "format": "prettier-standard --format"
   },
   "dependencies": {
-    "@koa/cors": "^2.2.3",
-    "@types/koa": "^2.11.3",
-    "@types/koa__cors": "^3.0.1",
-    "aws-sdk": "^2.656.0",
-    "koa": "^2.11.0",
-    "koa-body": "^4.1.1",
-    "typescript": "^3.8.3"
+    "@koa/cors": "^3.1.0",
+    "@types/bull": "^3.14.4",
+    "@types/koa": "^2.11.6",
+    "@types/koa__cors": "^3.0.2",
+    "@types/koa-router": "^7.4.1",
+    "@types/node": "^14.14.10",
+    "aws-sdk": "^2.804.0",
+    "axios": "^0.21.0",
+    "bull": "^3.20.0",
+    "dotenv": "^8.2.0",
+    "email-comb": "^4.0.3",
+    "html-crush": "^3.0.3",
+    "juice": "^7.0.0",
+    "koa": "^2.13.0",
+    "koa-body": "^4.2.0",
+    "koa-router": "^10.0.0",
+    "node-cache": "^5.1.2",
+    "typescript": "^4.1.2"
   },
   "devDependencies": {
-    "@types/node": "^13.11.1",
-    "prettier-standard": "^16.2.1",
-    "ts-node-dev": "^1.0.0-pre.44"
+    "prettier-standard": "^16.4.1",
+    "ts-node-dev": "^1.0.0"
   }
 }
