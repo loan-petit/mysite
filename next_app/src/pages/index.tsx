@@ -20,6 +20,8 @@ type Props = {
 export default function Home({ site, author, projects }: Props) {
   const [activeIndex, setActiveIndex] = React.useState(0)
 
+  if (!site || !author) return <div />
+
   return (
     <>
       <Head>
@@ -68,11 +70,20 @@ export default function Home({ site, author, projects }: Props) {
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => ({
-  props: {
-    site: await getSettings(),
-    author: await getOneAuthor({ slug: 'loanpetit' }),
-    projects: await getPosts(),
-  },
-  revalidate: 30,
-})
+export const getStaticProps: GetStaticProps = async () => {
+  try {
+    return {
+      props: {
+        site: await getSettings(),
+        author: await getOneAuthor({ slug: 'loanpetit' }),
+        projects: await getPosts(),
+      },
+      revalidate: 30,
+    }
+  } catch (error) {
+    return {
+      props: { site: null, author: null, projects: [] },
+      revalidate: 30,
+    }
+  }
+}

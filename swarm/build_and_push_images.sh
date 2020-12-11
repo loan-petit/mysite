@@ -49,10 +49,7 @@ fi
 
 for service in "${POSITIONAL[@]}"; do
   if [ "$service" == "next_app" ]; then
-    DOCKER_BUILDKIT=1 docker build $NO_CACHE \
-      --tag petitloan/mysite:next_app \
-      --secret id=GHOST_CONTENT_API_KEY,src=$SECRETS_DIR/GHOST_CONTENT_API_KEY.txt \
-      $SOURCE_DIR/../next_app
+    docker build $NO_CACHE --tag petitloan/mysite:next_app $SOURCE_DIR/../next_app
   fi
 
   if [ "$service" == "send_email" ]; then

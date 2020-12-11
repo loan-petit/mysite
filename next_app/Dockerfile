@@ -1,4 +1,3 @@
-# syntax = docker/dockerfile:1.0-experimental
 FROM node:alpine
 
 ENV NODE_ENV production
@@ -15,8 +14,7 @@ RUN npm install
 COPY . .
 
 # Build web app for production
-RUN --mount=type=secret,id=GHOST_CONTENT_API_KEY \
-    npm run build
+RUN npm run build
 
 # Start server
 CMD ["npm", "start"]
