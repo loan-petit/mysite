@@ -21,6 +21,8 @@ The application is deployed to a Docker Swarm using Docker images saved in [peti
 
 When the deployment is finished, the following services should be running on the hosting server.
 - **Traefik cloud native router** (named *traefik*): Based on traefik:v2.2
-- **Gatsby.js frontend based on React** (named *gatsby*): Based on petitloan/mysite:gatsby
+- **Next.js application** (named *next_app*): Based on petitloan/mysite:next_app
+- **API to send email via AWS SES** (named *send_email*): Based on petitloan/mysite:send_email
+- **Redis DB used to queue emails** (named *redis*): Based on redis:6.0-alpine
 - **Ghost headless CMS** (named *ghost*): Based on ghost:alpine
-- **MariaDB database** (named *db*): Based on mariadb
+- **MariaDB database for Ghost** (named *mariadb*): Based on mariadb
