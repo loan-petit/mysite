@@ -1,5 +1,7 @@
 #!/bin/bash
-set -eo pipefail
+set -e
+
+SOURCE_DIR=$(dirname "${BASH_SOURCE[0]}")
 
 function usage() {
   echo "Usage: $0 [OPTIONS]"
@@ -9,6 +11,8 @@ function usage() {
   echo "  -p, --traefik-password  Password for secured authentication to Traefik dashboard"
   echo "  --access-key-id         Your AWS access key id"
   echo "  --secret-access-key     Your AWS secret access key"
+  echo
+  echo "Each secret is written in plain text in './.secrets' folder. This folder is untracked for security concerns."
   exit 1
 }
 
@@ -79,29 +83,33 @@ remove_secret() {
 # Generate user:password secret key pair to connect to Traefik dashboard.
 if [ ${TRAEFIK_USER+x} ] && [ ${TRAEFIK_PASSWORD+x} ]; then
   remove_secret TRAEFIK_USERS
-  echo $(htpasswd -nb $TRAEFIK_USER $TRAEFIK_PASSWORD) |
-    docker $DOCKER_HOST_LIST secret create TRAEFIK_USERS -
+  secret_value="$(htpasswd -nb $TRAEFIK_USER $TRAEFIK_PASSWORD)"
+  echo $secret_value >$SOURCE_DIR/.secrets/TRAEFIK_USERS.txt
+  echo $secret_value | docker $DOCKER_HOST_LIST secret create TRAEFIK_USERS -
 fi
 
 # Generate secrets to store AWS credentials
 if [ ${AWS_ACCESS_KEY_ID+x} ] && [ ${AWS_SECRET_ACCESS_KEY+x} ]; then
   remove_secret AWS_ACCESS_KEY_ID
   remove_secret AWS_SECRET_ACCESS_KEY
+
+  echo -n $AWS_ACCESS_KEY_ID >$SOURCE_DIR/.secrets/AWS_ACCESS_KEY_ID.txt
   echo -n $AWS_ACCESS_KEY_ID | docker $DOCKER_HOST_LIST secret create AWS_ACCESS_KEY_ID -
+
+  echo -n $AWS_SECRET_ACCESS_KEY >$SOURCE_DIR/.secrets/AWS_SECRET_ACCESS_KEY.txt
   echo -n $AWS_SECRET_ACCESS_KEY | docker $DOCKER_HOST_LIST secret create AWS_SECRET_ACCESS_KEY -
 fi
 
-# Generate MYSQL database random secrets
+# Generate random secrets for various services
 SECRETS=(
   MYSQL_ROOT_PASSWORD
   MYSQL_PASSWORD
 )
 for secret in "${SECRETS[@]}"; do
   if [ -z "$(docker $DOCKER_HOST_LIST secret ls -f name=$secret -q)" ]; then
-    cat /dev/urandom |
-      tr -dc '0-9a-zA-Z!@#$%^&*_+-' |
-      head -c 15 |
-      docker $DOCKER_HOST_LIST secret create $secret -
+    secret_value="$(cat /dev/urandom | tr -dc '0-9a-zA-Z!@#$%^&*_+-' | head -c 15)"
+    echo -n $secret_value >$SOURCE_DIR/.secrets/$secret.txt
+    echo -n $secret_value | docker $DOCKER_HOST_LIST secret create $secret -
   fi
 done
 

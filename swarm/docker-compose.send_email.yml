@@ -9,12 +9,23 @@ services:
     deploy:
       labels:
         - "traefik.enable=true"
-        - "traefik.http.services.sendemail.loadbalancer.server.port=3000"
+        - "traefik.http.services.sendemail.loadbalancer.server.port=5000"
         - "traefik.http.routers.sendemail.rule=HostRegexp(`{host:(?:www.)?loanpetit.com}`) && PathPrefix(`/sendEmail`)"
-        - "traefik.http.routers.sendemail.entrypoints=backend"
+        - "traefik.http.routers.sendemail.entrypoints=backend-services"
         - "traefik.http.routers.sendemail.tls.certresolver=default"
         - "traefik.http.routers.sendemail.middlewares=sendemail-stripprefix"
         - "traefik.http.middlewares.sendemail-stripprefix.stripprefix.prefixes=/sendEmail"
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+
+  redis:
+    image: redis:6.0-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - "redis_data:/data"
+    deploy:
       restart_policy:
         condition: on-failure
         delay: 5s
@@ -25,3 +36,6 @@ secrets:
     external: true
   AWS_SECRET_ACCESS_KEY:
     external: true
+
+volumes:
+  redis_data:

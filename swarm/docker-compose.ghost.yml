@@ -2,15 +2,15 @@ version: "3.7"
 
 services:
   ghost:
-    image: ghost:3.13.3-alpine
+    image: ghost:3-alpine
     depends_on:
       - db
     secrets:
       - MYSQL_PASSWORD
     environment:
-      url: https://www.loanpetit.com:2368
+      url: https://www.loanpetit.com:8080
       database__client: mysql
-      database__connection__host: db
+      database__connection__host: mariadb
       database__connection__database: ghost
       database__connection__user: ghost
       database__connection__password_FILE: /run/secrets/MYSQL_PASSWORD
@@ -26,8 +26,8 @@ services:
       labels:
         - "traefik.enable=true"
         - "traefik.http.services.ghost.loadbalancer.server.port=2368"
-        - "traefik.http.routers.ghost.rule=HostRegexp(`{host:(?:www.)?loanpetit.com}`)"
-        - "traefik.http.routers.ghost.entrypoints=ghost"
+        - "traefik.http.routers.ghost.rule=HostRegexp(`{host:(?:www.)?loanpetit.com}`) && PathPrefix(`/ghost`)"
+        - "traefik.http.routers.ghost.entrypoints=backend-services"
         - "traefik.http.routers.ghost.tls.certresolver=default"
         - "traefik.http.routers.ghost.middlewares=ghost-compress"
         - "traefik.http.middlewares.ghost-compress.compress=true"
@@ -36,7 +36,7 @@ services:
         delay: 5s
         max_attempts: 3
 
-  db:
+  mariadb:
     image: mariadb
     secrets:
       - MYSQL_ROOT_PASSWORD

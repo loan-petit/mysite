@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   traefik:
-    image: "traefik:v2.2"
+    image: "traefik:2.3"
     command:
       - "--api.dashboard=true"
       - "--providers.docker=true"
@@ -11,9 +11,8 @@ services:
       # Entrypoints
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
-      - "--entrypoints.ghost.address=:2368"
-      - "--entrypoints.traefik.address=:8080"
-      - "--entrypoints.backend.address=:8081"
+      - "--entrypoints.backend-services.address=:8080"
+      - "--entrypoints.traefik.address=:8081"
       # ACME challenge for SSL certificate creation
       - "--certificatesresolvers.default.acme.httpchallenge=true"
       - "--certificatesresolvers.default.acme.httpchallenge.entrypoint=web"
@@ -22,7 +21,6 @@ services:
     ports:
       - "80:80"
       - "443:443"
-      - "2368:2368"
       - "8080:8080"
       - "8081:8081"
     secrets:
@@ -51,7 +49,7 @@ services:
         - "traefik.http.routers.api.tls.domains[1].main=www.loanpetit.com"
         - "traefik.http.routers.api.middlewares=auth"
         - "traefik.http.middlewares.auth.basicauth.usersfile=/run/secrets/TRAEFIK_USERS"
-        - "traefik.http.services.dashboard.loadbalancer.server.port=8080"
+        - "traefik.http.services.dashboard.loadbalancer.server.port=8081"
 
 secrets:
   TRAEFIK_USERS:

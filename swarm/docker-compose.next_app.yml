@@ -1,0 +1,18 @@
+version: "3.7"
+
+services:
+  next_app:
+    image: petitloan/mysite:next_app
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.services.next_app.loadbalancer.server.port=3000"
+        - "traefik.http.routers.next_app.rule=HostRegexp(`{host:(?:www.)?loanpetit.com}`)"
+        - "traefik.http.routers.next_app.entrypoints=websecure"
+        - "traefik.http.routers.next_app.tls.certresolver=default"
+        - "traefik.http.routers.next_app.middlewares=nextapp-compress"
+        - "traefik.http.middlewares.nextapp-compress.compress=true"

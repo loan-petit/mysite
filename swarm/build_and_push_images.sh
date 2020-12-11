@@ -8,6 +8,7 @@ SECRETS_DIR="$SOURCE_PATH/.secrets"
 
 function usage() {
   echo "Usage: $0 SERVICE_TO_BUILD..."
+  echo "  --no-cache   Do not use cache when building images"
   exit 1
 }
 
@@ -16,7 +17,7 @@ if ! [ -x "$(command -v docker)" ]; then
   exit 1
 fi
 
-SERVICES_TO_BUILD=()
+NO_CACHE=""
 
 POSITIONAL=()
 while [[ $# -gt 0 ]]; do
@@ -25,6 +26,10 @@ while [[ $# -gt 0 ]]; do
   case $key in
   -h | --help)
     usage
+    ;;
+  --no-cache)
+    NO_CACHE="$1"
+    shift
     ;;
   *)                   # unknown option
     POSITIONAL+=("$1") # save it in an array for later
@@ -37,32 +42,21 @@ set -- "${POSITIONAL[@]}" # restore positional parameters
 # Build every services if none was specified
 if [ ${#POSITIONAL[@]} -eq 0 ]; then
   POSITIONAL=(
-    "gatsby"
+    "next_app"
     "send_email"
   )
 fi
 
 for service in "${POSITIONAL[@]}"; do
-  if [ "$service" == "gatsby" ]; then
-    # Build Docker image for 'gatsby' service.
-    DOCKER_BUILDKIT=1 docker build --no-cache \
-      --tag mysite:gatsby \
-      --build-arg GHOST_API_URL=https://www.loanpetit.com:2368 \
+  if [ "$service" == "next_app" ]; then
+    DOCKER_BUILDKIT=1 docker build $NO_CACHE \
+      --tag petitloan/mysite:next_app \
       --secret id=GHOST_CONTENT_API_KEY,src=$SECRETS_DIR/GHOST_CONTENT_API_KEY.txt \
-      $SOURCE_DIR/../gatsby
-
-    # Tag the builded image
-    GATSBY_IMAGE_ID=$(docker image inspect mysite:gatsby --format='{{ .Id }}')
-    docker tag $GATSBY_IMAGE_ID petitloan/mysite:gatsby
+      $SOURCE_DIR/../next_app
   fi
 
   if [ "$service" == "send_email" ]; then
-    # Build Docker image for 'sendmail' service.
-    docker build --no-cache --tag mysite:send_email $SOURCE_DIR/../send_email
-
-    # Tag the builded image
-    SEND_EMAIL_IMAGE_ID=$(docker image inspect mysite:send_email --format='{{ .Id }}')
-    docker tag $SEND_EMAIL_IMAGE_ID petitloan/mysite:send_email
+    docker build $NO_CACHE --tag petitloan/mysite:send_email $SOURCE_DIR/../send_email
   fi
 done
 
