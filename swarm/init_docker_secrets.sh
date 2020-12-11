@@ -9,6 +9,7 @@ function usage() {
   echo "  --remote-destination    Remote server destination in user@host format"
   echo "  -u, --traefik-user      Username for secured authentication to Traefik dashboard"
   echo "  -p, --traefik-password  Password for secured authentication to Traefik dashboard"
+  echo "  --content-api-key       Your Ghost Content API key"
   echo "  --access-key-id         Your AWS access key id"
   echo "  --secret-access-key     Your AWS secret access key"
   echo
@@ -43,6 +44,10 @@ while [[ $# -gt 0 ]]; do
     ;;
   -p | --traefik-password)
     TRAEFIK_PASSWORD="$2"
+    shift 2
+    ;;
+  --content-api-key)
+    GHOST_CONTENT_API_KEY="$2"
     shift 2
     ;;
   --access-key-id)
@@ -80,12 +85,19 @@ remove_secret() {
   fi
 }
 
-# Generate user:password secret key pair to connect to Traefik dashboard.
+# Generate user:password secret key pair to connect to Traefik dashboard
 if [ ${TRAEFIK_USER+x} ] && [ ${TRAEFIK_PASSWORD+x} ]; then
   remove_secret TRAEFIK_USERS
   secret_value="$(htpasswd -nb $TRAEFIK_USER $TRAEFIK_PASSWORD)"
   echo $secret_value >$SOURCE_DIR/.secrets/TRAEFIK_USERS.txt
   echo $secret_value | docker $DOCKER_HOST_LIST secret create TRAEFIK_USERS -
+fi
+
+# Generate secret to store Ghost Content API key
+if [ ${GHOST_CONTENT_API_KEY+x} ]; then
+  remove_secret GHOST_CONTENT_API_KEY
+  echo -n $GHOST_CONTENT_API_KEY >$SOURCE_DIR/.secrets/GHOST_CONTENT_API_KEY.txt
+  echo -n $GHOST_CONTENT_API_KEY | docker $DOCKER_HOST_LIST secret create GHOST_CONTENT_API_KEY -
 fi
 
 # Generate secrets to store AWS credentials

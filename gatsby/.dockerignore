@@ -1,6 +1,0 @@
-.env.*
-!.env.production
-
-.cache/
-node_modules/
-public/

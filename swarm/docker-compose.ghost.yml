@@ -4,11 +4,11 @@ services:
   ghost:
     image: ghost:3-alpine
     depends_on:
-      - db
+      - mariadb
     secrets:
       - MYSQL_PASSWORD
     environment:
-      url: https://www.loanpetit.com:8080
+      url: https://www.loanpetit.com:2368
       database__client: mysql
       database__connection__host: mariadb
       database__connection__database: ghost
@@ -17,7 +17,7 @@ services:
     volumes:
       - "ghost_media_storage:/var/lib/ghost/content"
     configs:
-      - source: entrypoint
+      - source: ghost_entrypoint
         target: /usr/local/bin/docker-entrypoint.sh
         uid: "1000"
         gid: "1000"
@@ -26,8 +26,8 @@ services:
       labels:
         - "traefik.enable=true"
         - "traefik.http.services.ghost.loadbalancer.server.port=2368"
-        - "traefik.http.routers.ghost.rule=HostRegexp(`{host:(?:www.)?loanpetit.com}`) && PathPrefix(`/ghost`)"
-        - "traefik.http.routers.ghost.entrypoints=backend-services"
+        - "traefik.http.routers.ghost.rule=HostRegexp(`{host:(?:www.)?loanpetit.com}`)"
+        - "traefik.http.routers.ghost.entrypoints=ghost"
         - "traefik.http.routers.ghost.tls.certresolver=default"
         - "traefik.http.routers.ghost.middlewares=ghost-compress"
         - "traefik.http.middlewares.ghost-compress.compress=true"
@@ -37,7 +37,7 @@ services:
         max_attempts: 3
 
   mariadb:
-    image: mariadb
+    image: mariadb:10
     secrets:
       - MYSQL_ROOT_PASSWORD
       - MYSQL_PASSWORD
@@ -55,7 +55,7 @@ services:
         max_attempts: 3
 
 configs:
-  entrypoint:
+  ghost_entrypoint:
     file: ./ghost_entrypoint.sh
 
 secrets:

@@ -11,6 +11,7 @@ services:
       # Entrypoints
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
+      - "--entrypoints.ghost.address=:2368"
       - "--entrypoints.backend-services.address=:8080"
       - "--entrypoints.traefik.address=:8081"
       # ACME challenge for SSL certificate creation
@@ -21,6 +22,7 @@ services:
     ports:
       - "80:80"
       - "443:443"
+      - "2368:2368"
       - "8080:8080"
       - "8081:8081"
     secrets:

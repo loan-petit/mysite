@@ -1,9 +1,13 @@
 import GhostContentAPI from '@tryghost/content-api'
+import * as fs from 'fs'
 
 // Create API instance with site credentials
 const api = new GhostContentAPI({
   url: process.env.GHOST_API_URL,
-  key: process.env.GHOST_CONTENT_API_KEY,
+  key:
+    process.env.NODE_ENV === 'production'
+      ? fs.readFileSync('/run/secrets/GHOST_CONTENT_API_KEY').toString()
+      : process.env.GHOST_CONTENT_API_KEY,
   version: 'v3',
 })
 
