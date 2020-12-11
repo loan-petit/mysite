@@ -135,7 +135,7 @@ The scope should be the name of the npm package affected (as perceived by the pe
 
 The following is the list of supported scopes:
 
-* **gatsby**
+* **next-app**
 * **send-email**
 * **ghost**
 * **swarm**
