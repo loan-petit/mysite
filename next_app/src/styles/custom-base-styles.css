@@ -1,0 +1,88 @@
+h1 {
+  @apply py-1 text-4xl font-semibold leading-normal text-center text-gray-800;
+}
+
+h2 {
+  @apply text-2xl font-semibold;
+}
+
+h3 {
+  @apply pt-4 text-xl font-semibold text-gray-800;
+}
+
+h4 {
+  @apply py-1 text-base font-bold leading-normal text-gray-600 uppercase;
+}
+
+h5 {
+  @apply pt-2 leading-relaxed text-gray-600;
+}
+
+p {
+  @apply pt-2 leading-relaxed text-gray-700;
+}
+
+a,
+link {
+  @apply text-accent;
+
+  &:hover {
+    @apply text-accent-light;
+  }
+
+  &:focus {
+    @apply text-accent-light;
+  }
+}
+
+label {
+  @apply block pb-2 text-xs font-bold text-gray-700 uppercase;
+}
+
+input,
+textarea {
+  @apply w-full px-3 py-3 text-sm text-gray-700 bg-white rounded shadow;
+
+  &::placeholder {
+    @apply text-gray-400;
+  }
+
+  &:focus {
+    @apply outline-none ring;
+  }
+}
+
+small {
+  @apply text-sm text-center text-gray-300;
+}
+
+article {
+  & h2 {
+    @apply pt-8 text-2xl font-semibold text-gray-800;
+  }
+
+  & h3 {
+    @apply pt-6 text-xl font-semibold text-gray-800;
+  }
+
+  & p {
+    @apply pb-4 text-lg text-gray-700;
+  }
+
+  & ul li {
+    @apply pb-4 ml-6 text-lg text-gray-700;
+    list-style-type: disc;
+  }
+
+  & figure {
+    @apply w-full mt-12;
+  }
+
+  & figcaption {
+    @apply pt-2 leading-relaxed text-center text-gray-600;
+  }
+
+  & blockquote {
+    @apply p-4 my-2 text-lg leading-relaxed text-gray-700 border-l-4 border-accent;
+  }
+}

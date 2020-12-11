@@ -1,0 +1,47 @@
+.nav-text {
+  @apply px-3 py-2 text-xs font-bold text-gray-800 uppercase whitespace-nowrap;
+
+  &:hover {
+    @apply text-gray-600;
+  }
+
+  &:focus {
+    @apply text-gray-800;
+  }
+}
+
+.social-button {
+  @apply mr-2 text-2xl text-gray-900 bg-white rounded-full shadow-lg outline-none w-14 h-14;
+
+  &:hover {
+    @apply bg-gray-100 shadow-xl;
+  }
+
+  &:focus {
+    @apply outline-none;
+  }
+}
+
+.service-card {
+  @apply w-full px-4 mt-12 mb-4 text-center;
+}
+
+.service-icon {
+  @apply mx-auto text-2xl text-accent;
+}
+
+.projects-navigation-button {
+  @apply absolute top-0 w-12 h-12 mt-32 text-xl bg-white rounded-full shadow-md text-accent;
+
+  &:hover {
+    @apply text-accent-light;
+  }
+
+  &:focus {
+    @apply outline-none;
+  }
+}
+
+.form-error {
+  @apply text-xs italic text-red-500;
+}

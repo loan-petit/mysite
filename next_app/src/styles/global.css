@@ -1,0 +1,12 @@
+/* ./styles/global.css */
+@charset 'utf-8';
+
+/* Use Tailwind */
+@import 'tailwindcss/base';
+@import './custom-base-styles.css';
+
+@import 'tailwindcss/components';
+@import './custom-components.css';
+
+@import 'tailwindcss/utilities';
+@import './custom-utilities.css';

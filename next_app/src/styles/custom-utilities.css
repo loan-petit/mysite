@@ -1,0 +1,17 @@
+@responsive {
+  .vh-32 {
+    height: 32vh;
+  }
+
+  .vh-48 {
+    height: 48vh;
+  }
+
+  .-v-mt-24 {
+    margin-top: -24vh;
+  }
+
+  .-v-mt-40 {
+    margin-top: -40vh;
+  }
+}
