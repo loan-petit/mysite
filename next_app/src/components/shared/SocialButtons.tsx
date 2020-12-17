@@ -20,13 +20,13 @@ type Props = {
   }
 }
 
-export default function SocialButtons({ socialUrls }: Props) {
+export default function SocialButtons ({ socialUrls }: Props) {
   return (
-    <div className="flex flex-wrap justify-center mt-6">
+    <div className='flex flex-wrap justify-center mt-6'>
       {/* Facebook */}
       {socialUrls.facebook && (
-        <a href={socialUrls.facebook} target="_blank" rel="noopener noreferrer">
-          <button className="social-button">
+        <a href={socialUrls.facebook} target='_blank' rel='noopener noreferrer'>
+          <button className='social-button'>
             <FontAwesomeIcon icon={faFacebook} />
           </button>
         </a>
@@ -34,8 +34,8 @@ export default function SocialButtons({ socialUrls }: Props) {
 
       {/* GitHub */}
       {socialUrls.github && (
-        <a href={socialUrls.github} target="_blank" rel="noopener noreferrer">
-          <button className="social-button">
+        <a href={socialUrls.github} target='_blank' rel='noopener noreferrer'>
+          <button className='social-button'>
             <FontAwesomeIcon icon={faGithub} />
           </button>
         </a>
@@ -45,10 +45,10 @@ export default function SocialButtons({ socialUrls }: Props) {
       {socialUrls.instagram && (
         <a
           href={socialUrls.instagram}
-          target="_blank"
-          rel="noopener noreferrer"
+          target='_blank'
+          rel='noopener noreferrer'
         >
-          <button className="social-button">
+          <button className='social-button'>
             <FontAwesomeIcon icon={faInstagram} />
           </button>
         </a>
@@ -56,8 +56,8 @@ export default function SocialButtons({ socialUrls }: Props) {
 
       {/* Linkedin */}
       {socialUrls.linkedin && (
-        <a href={socialUrls.linkedin} target="_blank" rel="noopener noreferrer">
-          <button className="social-button">
+        <a href={socialUrls.linkedin} target='_blank' rel='noopener noreferrer'>
+          <button className='social-button'>
             <FontAwesomeIcon icon={faLinkedin} />
           </button>
         </a>
@@ -65,8 +65,8 @@ export default function SocialButtons({ socialUrls }: Props) {
 
       {/* Twitter */}
       {socialUrls.twitter && (
-        <a href={socialUrls.twitter} target="_blank" rel="noopener noreferrer">
-          <button className="social-button">
+        <a href={socialUrls.twitter} target='_blank' rel='noopener noreferrer'>
+          <button className='social-button'>
             <FontAwesomeIcon icon={faTwitter} />
           </button>
         </a>
@@ -74,8 +74,8 @@ export default function SocialButtons({ socialUrls }: Props) {
 
       {/* Website */}
       {socialUrls.website && (
-        <a href={socialUrls.website} target="_blank" rel="noopener noreferrer">
-          <button className="social-button">
+        <a href={socialUrls.website} target='_blank' rel='noopener noreferrer'>
+          <button className='social-button'>
             <FontAwesomeIcon icon={faGlobe} />
           </button>
         </a>

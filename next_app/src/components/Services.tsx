@@ -9,15 +9,18 @@ import React from 'react'
 
 import WaveShapedCanvas from './shared/WaveShapedCanvas'
 
-export default function Services() {
+export default function Services () {
   return (
-    <section id="services" className="relative pt-20 pb-32 bg-gray-300 lg:pb-56">
+    <section
+      id='services'
+      className='relative pt-20 pb-32 bg-gray-300 lg:pb-56'
+    >
       <h1>My services</h1>
 
-      <div className="flex flex-wrap justify-center">
+      <div className='flex flex-wrap justify-center'>
         {/* Mobile and web applications */}
-        <div className="service-card md:w-5/12 lg:w-3/12">
-          <FontAwesomeIcon icon={faDesktop} className="service-icon" />
+        <div className='service-card md:w-5/12 lg:w-3/12'>
+          <FontAwesomeIcon icon={faDesktop} className='service-icon' />
           <h3>Mobile and web applications</h3>
           <p>
             I develop intuitive and impactful websites and applications, with
@@ -26,8 +29,8 @@ export default function Services() {
         </div>
 
         {/* DevOps */}
-        <div className="service-card md:w-5/12 lg:w-3/12">
-          <FontAwesomeIcon icon={faCubes} className="service-icon" />
+        <div className='service-card md:w-5/12 lg:w-3/12'>
+          <FontAwesomeIcon icon={faCubes} className='service-icon' />
           <h3>DevOps</h3>
           <p>
             I automate software delivery and improve systems scalability using
@@ -36,10 +39,10 @@ export default function Services() {
         </div>
       </div>
 
-      <div className="flex flex-wrap justify-center">
+      <div className='flex flex-wrap justify-center'>
         {/* Backend */}
-        <div className="service-card md:w-5/12 lg:w-3/12">
-          <FontAwesomeIcon icon={faCogs} className="service-icon" />
+        <div className='service-card md:w-5/12 lg:w-3/12'>
+          <FontAwesomeIcon icon={faCogs} className='service-icon' />
           <h3>Backend</h3>
           <p>
             I develop stable, secure, and efficient backends using GraphQL,
@@ -48,8 +51,8 @@ export default function Services() {
         </div>
 
         {/* Chatbot */}
-        <div className="service-card md:w-5/12 lg:w-3/12">
-          <FontAwesomeIcon icon={faComments} className="service-icon" />
+        <div className='service-card md:w-5/12 lg:w-3/12'>
+          <FontAwesomeIcon icon={faComments} className='service-icon' />
           <h3>Chatbot</h3>
           <p>
             With Dialogflow, I develop and deploy chatbots on voice assistants
@@ -58,7 +61,7 @@ export default function Services() {
         </div>
       </div>
 
-      <WaveShapedCanvas fillStyle="#ffffff" />
+      <WaveShapedCanvas fillStyle='#ffffff' />
     </section>
   )
 }

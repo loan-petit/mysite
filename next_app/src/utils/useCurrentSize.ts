@@ -30,7 +30,7 @@ const useCurrentSize = () => {
       // Change width and height from the state object after 150 milliseconds
       timeoutId = setTimeout(
         () => setSize({ width: getWidth(), height: getHeight() }),
-        150
+        150,
       )
     }
 

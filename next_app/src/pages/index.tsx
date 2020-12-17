@@ -9,7 +9,7 @@ import Services from '../components/Services'
 import WaveShapedCanvas from '../components/shared/WaveShapedCanvas'
 import ProjectCard from '../components/ProjectCard'
 import Contact from '../components/Contact'
-import { getOneAuthor, getPosts, getSettings } from './api/ghost'
+import GhostHelper from './api/ghost'
 
 type Props = {
   site: Settings & { codeinjection_styles: string }
@@ -17,7 +17,7 @@ type Props = {
   projects: PostOrPage[]
 }
 
-export default function Home({ site, author, projects }: Props) {
+export default function Home ({ site, author, projects }: Props) {
   const [activeIndex, setActiveIndex] = React.useState(0)
 
   if (!site || !author) return <div />
@@ -34,7 +34,7 @@ export default function Home({ site, author, projects }: Props) {
         <Services />
 
         {/* Projects */}
-        <section id="projects" className="relative pt-20 pb-32 lg:pb-56">
+        <section id='projects' className='relative pt-20 pb-32 lg:pb-56'>
           <h1>My Projects</h1>
 
           {projects[activeIndex] && (
@@ -48,7 +48,7 @@ export default function Home({ site, author, projects }: Props) {
           )}
 
           {/* Buttons indicating the current item and allowing to easily browse those */}
-          <div className="flex flex-wrap justify-center">
+          <div className='flex flex-wrap justify-center'>
             {projects.map((_, index) => (
               <button
                 key={index}
@@ -61,7 +61,7 @@ export default function Home({ site, author, projects }: Props) {
             ))}
           </div>
 
-          <WaveShapedCanvas fillStyle="#0f172a" />
+          <WaveShapedCanvas fillStyle='#0f172a' />
         </section>
 
         <Contact />
@@ -74,16 +74,14 @@ export const getStaticProps: GetStaticProps = async () => {
   try {
     return {
       props: {
-        site: await getSettings(),
-        author: await getOneAuthor({ slug: 'loanpetit' }),
-        projects: await getPosts(),
+        site: await GhostHelper.getSettings(),
+        author: await GhostHelper.getOneAuthor({ slug: 'loanpetit' }),
+        projects: await GhostHelper.getPosts(),
       },
-      revalidate: 30,
     }
   } catch (error) {
     return {
       props: { site: null, author: null, projects: [] },
-      revalidate: 30,
     }
   }
 }
