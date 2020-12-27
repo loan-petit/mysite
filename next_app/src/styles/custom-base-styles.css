@@ -76,10 +76,14 @@ article {
 
   & figure {
     @apply w-full mt-12;
-  }
 
-  & figcaption {
-    @apply pt-2 leading-relaxed text-center text-gray-600;
+    & img {
+      @apply w-full h-full;
+    }
+
+    & figcaption {
+      @apply pt-2 leading-relaxed text-center text-gray-600;
+    }
   }
 
   & blockquote {

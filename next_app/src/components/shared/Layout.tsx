@@ -11,27 +11,20 @@ type Props = {
   isHome?: boolean
 }
 
-export default function Layout ({ children, site, isHome }: Props) {
+export default function Layout({ children, site, isHome }: Props) {
   return (
     <>
       <Head>
-        <html lang={site.lang} />
-        <meta
-          name='viewport'
-          content='width=device-width, initial-scale=1, maximum-scale=3.0, minimum-scale=1'
-        />
-        <link rel='icon' href={site.icon} />
-        <link rel='shortcut icon' href={site.icon} />
-        <style type='text/css'>{`${site.codeinjection_styles}`}</style>
-        <body />
+        <link rel="shortcut icon" href={site.icon} />
+        <style type="text/css">{`${site.codeinjection_styles}`}</style>
       </Head>
 
       <header>
         <Navbar site={site} />
-        <div className='h-16'></div>
+        <div className="h-16"></div>
         {isHome && (
           <figure
-            className='relative w-full bg-center bg-cover vh-48 lg:vh-32'
+            className="relative w-full bg-center bg-cover vh-48 lg:vh-32"
             style={{
               backgroundImage: `url(${site.cover_image})`,
             }}
@@ -45,15 +38,15 @@ export default function Layout ({ children, site, isHome }: Props) {
       </main>
 
       {!isHome && (
-        <div className='relative mt-20 lg:mt-32'>
-          <WaveShapedCanvas fillStyle='#0f172a' />
+        <div className="relative mt-20 lg:mt-32">
+          <WaveShapedCanvas fillStyle="#0f172a" />
         </div>
       )}
 
-      <div className='flex flex-col flex-wrap justify-center bg-gray-900'>
-        <small className='pb-4'>
+      <div className="flex flex-col flex-wrap justify-center bg-gray-900">
+        <small className="pb-4">
           Check out the source code on{' '}
-          <a href='https://github.com/loan-petit/mysite'>GitHub</a>
+          <a href="https://github.com/loan-petit/mysite">GitHub</a>
           <br />
           Copyright © {new Date().getFullYear()} Loan PETIT. All rights
           reserved.
